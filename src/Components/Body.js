@@ -29,7 +29,7 @@ const Body = () => {
     }
   };
 
-  if (!allRestaurants) return null;
+  if (!allRestaurants) return <Shimmer />;
 
   return (
     <div className="">
@@ -41,8 +41,6 @@ const Body = () => {
           value={searchText}
           onChange={(e) => {
             setSearchText(e.target.value);
-
-            searchData(e.target.value, allRestaurants);
           }}
         />
         <div className="flex gap-1 items-center text-base bg-[#373737] rounded-sm text-white py-[6px] px-1 rounded-r-sm font-bold">
@@ -55,7 +53,6 @@ const Body = () => {
           </button>
           <FiSearch className="text-lg" />
         </div>
-        
       </div>
       {errorMessage && <div className="error-container">{errorMessage}</div>}
 

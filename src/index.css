@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@500&display=swap');
+
+body {
+  font-family: "Nunito", sans-serif;
+}
+
 .bg-shadow {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
