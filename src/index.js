@@ -10,14 +10,19 @@ import "./index.css";
 
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
+import Cart from "./Components/Cart";
+import { Provider } from "react-redux";
+import store from "./Utils/store";
 const AppLayout = () => {
   return (
     <React.Fragment>
-      <Header />
-      {/* <RegisterLogin /> */}
-      <Outlet />
-      <Footer />
-      <ToastContainer />
+      <Provider store={store}>
+        <Header />
+        {/* <RegisterLogin /> */}
+        <Outlet />
+        <Footer />
+        <ToastContainer />
+      </Provider>
     </React.Fragment>
   );
 };
@@ -31,6 +36,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/",
         element: <Body />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
       {
         path: "restaurant/:resId",

@@ -9,8 +9,8 @@ import { FaLinkedin } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <div className="flex items-center justify-center gap-1 text-[#373737] h-16 text-base font-semibold bg-shadow">
-      <div className="flex items-center relative top-1 gap-1">
+    <div className="flex items-center justify-center gap-1 text-[#373737] h-16 text-base font-semibold bg-shadow mt-10">
+      <div className="flex items-center relative gap-1">
         <a
           onClick={() => {
             toast.info("Redirecting to github", {

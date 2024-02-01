@@ -1,6 +1,7 @@
 import React from "react";
 import foodlogo from "../Images/logo.png";
 import { FiSearch } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -12,9 +13,13 @@ const Header = () => {
         </h3>
       </div>
       <ul className="flex gap-2 font-bold">
-        <li>Home</li>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
         <li>Contact</li>
-        <li>Cart</li>
+        <li>
+          <Link to="/cart">Cart</Link>
+        </li>
         <li>About</li>
       </ul>
     </div>
