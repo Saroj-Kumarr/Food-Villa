@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { FaMinusSquare, FaRupeeSign } from "react-icons/fa";
 import { IoCartSharp } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,12 +8,54 @@ import { MdDeleteForever } from "react-icons/md";
 
 const Cart = () => {
   const cartItems = useSelector((store) => store.item.cartItems);
-
+  const [couponValue, setCouponValue] = useState("");
   const dispatch = useDispatch();
+  const [totalPrice, setTotalPrice] = useState(0);
+  const [discount, setDiscount] = useState(0);
+  const [deliveryCharge, setDeliveryCharge] = useState(0);
+  const [avail, setAvail] = useState(false);
+
+  const getValues = () => {
+    var total = cartItems.reduce((total, item) => {
+      return (
+        total +
+        (item.card.info.price
+          ? item.card.info.price / 100
+          : item.card.info.defaultPrice / 100)
+      );
+    }, 0);
+
+    setTotalPrice(total);
+
+    if (total > 100 && total <= 300) {
+      setDiscount((total * 10) / 100);
+      setDeliveryCharge(40);
+    } else if (total > 300 && total <= 500) {
+      setDiscount((total * 20) / 100);
+      setDeliveryCharge(80);
+    } else {
+      setDiscount((total * 30) / 100);
+      setDeliveryCharge(120);
+    }
+    
+  };
 
   const handleClear = () => {
     dispatch(clearCart());
   };
+
+  const onCouponApply = () => {
+    if (couponValue === "SAROJ200" && avail == false) {
+      setTotalPrice((prev) => prev - 200);
+      setAvail(true);
+    }else{
+      console.log("You're coupon is already applied");
+    }
+  };
+
+  useEffect(() => {
+    getValues();
+  }, []);
 
   return (
     <div className="flex items-center justify-center flex-col  ">
@@ -39,7 +81,7 @@ const Cart = () => {
             return <ItemListCard item={item} />;
           })}
         </div>
-        <div className="w-3/12 border-2 p-2 h-[65vh] bg-shadow fixed right-16 top-44 rounded-sm">
+        <div className="w-[21rem] border-2 p-2 h-[65vh] bg-shadow fixed right-24 top-44 rounded-sm">
           <h3 className="text-center text-lg font-bold text-[#373737] border-b-2 border-[#373737] pb-2 ">
             Price Details
           </h3>
@@ -50,7 +92,7 @@ const Cart = () => {
                 <li className="w-6/12 ">
                   {" "}
                   <FaRupeeSign className="inline text-sm -mt-[2px]" />
-                  860
+                  {totalPrice}
                 </li>
               </ul>
               <ul className="flex mt-4">
@@ -58,7 +100,7 @@ const Cart = () => {
                 <li className="w-6/12">
                   {" "}
                   <FaRupeeSign className="inline text-sm -mt-[2px]" />
-                  860
+                  {parseInt(discount)}
                 </li>
               </ul>
               <ul className="flex mt-4">
@@ -66,7 +108,7 @@ const Cart = () => {
                 <li className="w-6/12">
                   {" "}
                   <FaRupeeSign className="inline text-sm -mt-[2px]" />
-                  860
+                  {parseInt(deliveryCharge)}
                 </li>
               </ul>
               <ul className="flex mt-4">
@@ -74,7 +116,7 @@ const Cart = () => {
                 <li className="w-6/12 text-xl font-bold">
                   {" "}
                   <FaRupeeSign className="inline text-sm -mt-[2px]" />
-                  860
+                  {parseInt(totalPrice + deliveryCharge - discount)}
                 </li>
               </ul>
             </div>
@@ -82,11 +124,18 @@ const Cart = () => {
             <div className="flex items-center justify-center">
               <div>
                 <input
+                  onChange={(e) => {
+                    setCouponValue(e.target.value);
+                  }}
+                  value={couponValue}
                   type="text"
                   className="text-center border-2 p-1 focus:outline-none mt-2"
-                  placeholder=" SAROJ200"
+                  placeholder="SAROJ200"
                 />
-                <button className="bg-[#373737]  text-white px-2 py-[5px]">
+                <button
+                  onClick={() => onCouponApply()}
+                  className="bg-[#373737]  text-white px-2 py-[5px]"
+                >
                   Apply
                 </button>
               </div>

@@ -22,10 +22,12 @@ const ItemListCard = ({ item }) => {
     e.stopPropagation();
   };
 
+  if (!item) return;
+
   return (
     <div
       key={item.card.info.id}
-      className="p-2 mt-2 gap-1 hover:shadow-xl shadow-lg duration-200 flex h-28 w-full"
+      className="p-2 mt-2 gap-1 hover:shadow-xl shadow-lg duration-200 flex h-32 w-full"
     >
       {item.card.info.imageId ? (
         <img className="h-full" src={IMG_CDN_URL + item.card.info.imageId} />
@@ -41,15 +43,17 @@ const ItemListCard = ({ item }) => {
           <span className="text-sm">
             {" "}
             <FaRupeeSign className="inline text-sm -mt-[2px]" />
-            {item.card.info.price
+            {parseInt(item.card.info.price
               ? item.card.info.price / 100
-              : item.card.info.defaultPrice / 100}
+              : item.card.info.defaultPrice / 100)}
           </span>
         </div>
-        <p className="text-xs">
-          {item.card.info.description}
+        <p className="text-xs mt-1">
+          {item.card.info.description &&
+            item.card.info.description.substring(0, 200)}
+          .
         </p>
-        <div className="flex text-white text-sm gap-2">
+        <div className="flex text-white text-sm gap-2 mt-1">
           <button
             onClick={handleAddClick}
             className="bg-green-600 hover:bg-green-700 duration-200  px-2 py-[1px] rounded-sm bg-shadow"
