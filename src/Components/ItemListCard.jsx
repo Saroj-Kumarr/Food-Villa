@@ -27,7 +27,7 @@ const ItemListCard = ({ item }) => {
   return (
     <div
       key={item.card.info.id}
-      className="p-2 mt-2 gap-1 hover:shadow-xl shadow-lg duration-200 flex h-32 w-full"
+      className="p-2 mt-2 gap-1 hover:shadow-xl shadow-lg duration-200 flex h-32 w-full bg-[#373737]"
     >
       {item.card.info.imageId ? (
         <img className="h-full" src={IMG_CDN_URL + item.card.info.imageId} />
@@ -37,21 +37,22 @@ const ItemListCard = ({ item }) => {
 
       <div className="w-9/12">
         <div className="flex flex-col">
-          <span className="font-bold text-orange-400">
+          <span className="font-bold text-orange-400 ">
             {item.card.info.name}
           </span>
-          <span className="text-sm">
+          <span className="text-sm text-green-600">
             {" "}
-            <FaRupeeSign className="inline text-sm -mt-[2px]" />
-            {parseInt(item.card.info.price
-              ? item.card.info.price / 100
-              : item.card.info.defaultPrice / 100)}
+            <FaRupeeSign className="inline text-sm -mt-[2px] " />
+            {parseInt(
+              item.card.info.price
+                ? item.card.info.price / 100
+                : item.card.info.defaultPrice / 100
+            )}
           </span>
         </div>
-        <p className="text-xs mt-1">
+        <p className="text-xs mt-1 text-white">
           {item.card.info.description &&
             item.card.info.description.substring(0, 200)}
-          .
         </p>
         <div className="flex text-white text-sm gap-2 mt-1">
           <button

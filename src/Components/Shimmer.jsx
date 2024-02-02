@@ -6,8 +6,8 @@ const Shimmer = () => {
   return (
     <div className="shimmer-container flex flex-wrap justify-center items-center">
       {[...Array(10)].map((_, index) => (
-        <div key={index} className="shimmer-cards m-2">
-          <ShimmerThumbnail height={200} width={250} rounded />
+        <div key={index} className="shimmer-cards m-2 bg-shadow rounded-sm">
+          <ShimmerThumbnail height={200} width={250} />
           <ShimmerTitle
             line={3}
             gap={10}

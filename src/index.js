@@ -13,6 +13,8 @@ import { ToastContainer } from "react-toastify";
 import Cart from "./Components/Cart";
 import { Provider } from "react-redux";
 import store from "./Utils/store";
+import Contact from "./Components/Contact";
+import About from "./Components/About";
 const AppLayout = () => {
   return (
     <React.Fragment>
@@ -36,6 +38,14 @@ const appRouter = createBrowserRouter([
       {
         path: "/",
         element: <Body />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
+      {
+        path: "/about",
+        element: <About />,
       },
       {
         path: "/cart",

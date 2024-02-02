@@ -12,15 +12,19 @@ const Header = () => {
           Food <span className="text-[#B22126]">Villa</span>{" "}
         </h3>
       </div>
-      <ul className="flex gap-2 font-bold">
-        <li>
+      <ul className="flex gap-2 font-bold relative z-50">
+        <li className="bg-[#B22126] px-2 py-[2px] text-white rounded-sm hover:bg-[#a31b1f]">
           <Link to="/">Home</Link>
         </li>
-        <li>Contact</li>
-        <li>
+        <li className="bg-[#373737] px-2 py-[2px] text-white rounded-sm hover:bg-[#272222] duration-200">
+          <Link to="/contact">Contact</Link>
+        </li>
+        <li className="bg-[#373737] px-2 py-[2px] text-white rounded-sm hover:bg-[#272222] duration-200">
           <Link to="/cart">Cart</Link>
         </li>
-        <li>About</li>
+        <li className="bg-[#373737] px-2 py-[2px] text-white rounded-sm hover:bg-[#272222] duration-200">
+          <Link to="/about">About</Link>
+        </li>
       </ul>
     </div>
   );
