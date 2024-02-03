@@ -10,10 +10,12 @@ const RestaurantCard = ({
   costForTwo,
   avgRatingString,
 }) => {
+  console.log(sla);
+
   return (
-    <div className="w-[240px] min-h-[41vh] rounded-sm bg-shadow cursor-pointer hover:scale-105 duration-200 bg-[#373737] m-2 p-2">
+    <div className="w-[270px] min-h-[45vh] rounded-sm bg-shadow cursor-pointer hover:scale-105 duration-200 bg-[#373737] m-2 p-2">
       <img
-        className="h-36 rounded-sm text-center"
+        className="w-full h-40 rounded-sm text-center"
         src={IMG_CDN_URL + cloudinaryImageId}
       />
       <h3 className="text-center font-bold text-base text-white">{name}</h3>
@@ -26,37 +28,38 @@ const RestaurantCard = ({
           {sla?.lastMileTravelString ?? "2.0 km"}
         </p>
         <p className=" text-white text-sm">{costForTwo ?? "₹200 for two"}</p>
+        <p className="text-white">{sla.slaString}</p>
       </span>
 
       <div className="flex justify-center items-center mt-2">
-      {avgRatingString > 4 ? (
-        <>
-          {avgRatingString > 4.5 ? (
-            <>
-              {" "}
-              <p className="bg-green-500 font-bold text-center text-white px-1 py-[1px] rounded-sm text-sm ">
-                {avgRatingString}
-                <IoMdStar className="inline -mt-[4px] text-base" />
-              </p>{" "}
-            </>
-          ) : (
-            <>
-              {" "}
-              <p className="bg-yellow-500 text-white font-bold text-center px-1 py-[1px] rounded-sm  text-sm">
-                {avgRatingString}
-                <IoMdStar className="inline -mt-[5px] -ml-[2px]" />
-              </p>
-            </>
-          )}
-        </>
-      ) : (
-        <>
-          <p className="bg-red-500 text-white font-bold text-center px-1 py-[1px] rounded-sm  text-sm">
-            {avgRatingString}
-            <IoMdStar className="inline -mt-[5px] -ml-[2px]" />
-          </p>
-        </>
-      )}
+        {avgRatingString > 4 ? (
+          <>
+            {avgRatingString > 4.5 ? (
+              <>
+                {" "}
+                <p className="bg-green-500 font-bold text-center text-white px-1 py-[1px] rounded-sm text-sm ">
+                  {avgRatingString}
+                  <IoMdStar className="inline -mt-[4px] text-base" />
+                </p>{" "}
+              </>
+            ) : (
+              <>
+                {" "}
+                <p className="bg-yellow-500 text-white font-bold text-center px-1 py-[1px] rounded-sm  text-sm">
+                  {avgRatingString}
+                  <IoMdStar className="inline -mt-[5px] -ml-[2px]" />
+                </p>
+              </>
+            )}
+          </>
+        ) : (
+          <>
+            <p className="bg-red-500 text-white font-bold text-center px-1 py-[1px] rounded-sm  text-sm">
+              {avgRatingString}
+              <IoMdStar className="inline -mt-[5px] -ml-[2px]" />
+            </p>
+          </>
+        )}
       </div>
     </div>
   );

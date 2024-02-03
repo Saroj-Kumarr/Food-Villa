@@ -1,9 +1,10 @@
 import React from "react";
+import contactImage from "../Images/8690678_3969587.jpg";
 
 const Contact = () => {
   return (
     <div className="h-[75vh] flex justify-center">
-      <div className="w-6/12 mt-20">
+      <div className="w-7/12 mt-20 ml-20">
         <h1 className="font-bold text-3xl text-center">Contact me</h1>
         <div className="flex items-center mt-2">
           <p className="w-5/12 bg-[#373737] h-[3px]"></p>
@@ -35,11 +36,16 @@ const Contact = () => {
                   rows="5"
                   className="border-2 row w-10/12 mt-2 resize-none px-2 font-bold  "
                 ></textarea>
-                <button className="bg-[#B22126] px-2 py-1 w-10/12 mt-2 rounded-sm text-white font-bold bg-shadow hover:bg-[#921317] duration-200">Send</button>
+                <button className="bg-[#B22126] px-2 py-1 w-10/12 mt-2 rounded-sm text-white font-bold bg-shadow hover:bg-[#921317] duration-200">
+                  Send
+                </button>
               </div>
             </div>
           </form>
         </div>
+      </div>
+      <div className="w-5/12">
+        <img src={contactImage} alt="" />
       </div>
     </div>
   );

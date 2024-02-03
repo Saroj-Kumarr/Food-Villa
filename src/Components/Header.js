@@ -17,10 +17,10 @@ const Header = () => {
           <Link to="/">Home</Link>
         </li>
         <li className="bg-[#373737] px-2 py-[2px] text-white rounded-sm hover:bg-[#272222] duration-200">
-          <Link to="/contact">Contact</Link>
+          <Link to="/cart">Cart</Link>
         </li>
         <li className="bg-[#373737] px-2 py-[2px] text-white rounded-sm hover:bg-[#272222] duration-200">
-          <Link to="/cart">Cart</Link>
+          <Link to="/contact">Contact</Link>
         </li>
         <li className="bg-[#373737] px-2 py-[2px] text-white rounded-sm hover:bg-[#272222] duration-200">
           <Link to="/about">About</Link>

@@ -14,12 +14,12 @@ const RestaurantCategories = ({ data }) => {
 
   return (
     <div className="w-7/12 flex flex-col mx-auto" onClick={() => handleClick()}>
-      <div className=" mx-auto my-4 w-full bg-gray-50 shadow-lg p-4 flex justify-between">
-        <span className="font-bold text-[#373737]">
+      <div className=" mx-auto my-4 w-full bg-[#373737] bg-shadow p-4 flex justify-between">
+        <span className="font-bold text-white">
           {data.title}
-          <span className="text-[#B22126]"> {data.itemCards.length}</span> Items
+          <span className="text-[#B22126] "> {data.itemCards.length}</span> Items
         </span>
-        <span>
+        <span className="text-white">
           {isDown ? (
             <BiSolidDownArrow className="inline" />
           ) : (
