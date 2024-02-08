@@ -5,6 +5,7 @@ const itemSlice = createSlice({
   initialState: {
     cartItems: [],
     theme: true,
+    login: false,
   },
   reducers: {
     addToCart: (state, action) => {
@@ -24,9 +25,13 @@ const itemSlice = createSlice({
     setTheme: (state) => {
       state.theme = !state.theme;
     },
+    setLogin: (state, action) => {
+      state.login = action.payload;
+    },
   },
 });
 
-export const { addToCart, deleteToCart, clearCart,setTheme } = itemSlice.actions;
+export const { addToCart, deleteToCart, clearCart, setTheme, setLogin } =
+  itemSlice.actions;
 
 export default itemSlice.reducer;

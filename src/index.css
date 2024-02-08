@@ -7,15 +7,42 @@
 body {
   font-family: "Nunito", sans-serif;
   color: #373737;
+  background-color: #373737;
 }
 
 .bg-shadow {
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.bg-shadow-black {
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.bg-shimmer-shadow {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.card-shadow:hover {
+  box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px,
+    rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
+}
+
+.card-shadow-black:hover {
+  box-shadow: rgba(59, 73, 84, 0.48) 6px 2px 16px 0px,
+    rgba(59, 51, 51, 0.8) -6px -2px 16px 0px;
 }
 
 .dark_mode {
-  margin-top: -20px;
+  margin-top: -25px;
   margin-left: 10px;
+}
+
+/* Change background color of main div when dark mode is not active */
+.dark_mode_input:not(:checked) ~ .dark_mode_main {
+  background-color: #333; /* Adjust as needed */
 }
 
 .dark_mode_label {
@@ -23,7 +50,7 @@ body {
   height: 30px;
   position: relative;
   display: block;
-  background: white;
+  background: white; /* Changed */
   border-radius: 200px;
   cursor: pointer;
   transition: 0.3s;
@@ -34,8 +61,8 @@ body {
   height: 25px;
   position: absolute;
   top: 3px;
-  left: 3px;
-  background: linear-gradient(180deg, #ffcc89, #d8860b);
+  left: 37px; /* Changed */
+  background: linear-gradient(180deg, #777, #3a3a3a);
   border-radius: 180px;
   transition: 0.3s;
 }
@@ -43,14 +70,15 @@ body {
   width: 0;
   height: 0;
   visibility: hidden;
+  
 }
 .dark_mode_input:checked + .dark_mode_label {
-  background: #242424;
+  background: #373737; /* Changed */
 }
 .dark_mode_input:checked + .dark_mode_label:after {
-  left: 62px;
-  transform: translateX(-100%);
-  background: linear-gradient(180deg, #777, #3a3a3a);
+  left: 3px; /* Changed */
+  transform: translateX(0); /* Changed */
+  background: linear-gradient(180deg, #ffcc89, #d8860b); /* Changed */
 }
 
 .dark_mode_label:active:after {
@@ -62,20 +90,19 @@ body {
   width: 20px;
   top: 5px;
   z-index: 100;
+  transition: 0.3s;
 }
 .dark_mode_label svg.sun {
-  left: 5px;
-  fill: white;
-  transition: 0.3s;
+  left: 5px; /* Changed */
+  fill: #7e7e7e; /* Changed */
 }
 .dark_mode_label svg.moon {
-  left: 40px;
-  fill: #7e7e7e;
-  transition: 0.3s;
+  left: 40px; /* Changed */
+  fill: white; /* Changed */
 }
 .dark_mode_input:checked + .dark_mode_label svg.sun {
-  fill: #7e7e7e;
+  fill: white; /* Changed */
 }
 .dark_mode_input:checked + .dark_mode_label svg.moon {
-  fill: white;
+  fill: #7e7e7e; /* Changed */
 }

@@ -15,12 +15,12 @@ import { Provider } from "react-redux";
 import store from "./Utils/store";
 import Contact from "./Components/Contact";
 import About from "./Components/About";
+
 const AppLayout = () => {
   return (
     <React.Fragment>
       <Provider store={store}>
         <Header />
-        {/* <RegisterLogin /> */}
         <Outlet />
         <Footer />
         <ToastContainer />
@@ -37,6 +37,10 @@ const appRouter = createBrowserRouter([
     children: [
       {
         path: "/",
+        element: <RegisterLogin />,
+      },
+      {
+        path: "/body",
         element: <Body />,
       },
       {

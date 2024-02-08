@@ -4,11 +4,13 @@ import { FaRupeeSign } from "react-icons/fa";
 import { FaPlusSquare } from "react-icons/fa";
 import { FaMinusSquare } from "react-icons/fa";
 import ImageShimmer from "./ImageShimmer";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToCart, deleteToCart } from "../Utils/ItemSlice";
 
 const ItemListCard = ({ item }) => {
   const dispatch = useDispatch();
+
+  const theme = useSelector((store) => store.item.theme);
 
   const handleAddClick = (e) => {
     dispatch(addToCart(item));
@@ -27,7 +29,9 @@ const ItemListCard = ({ item }) => {
   return (
     <div
       key={item.card.info.id}
-      className="p-2 mt-2 gap-1 hover:shadow-xl shadow-lg duration-200 flex h-32 w-full bg-[#373737]"
+      className={`p-2 mt-3 gap-1 bg-shadow duration-200 flex h-32 w-full ${
+        theme ? "bg-[#373737]" : "bg-white"
+      }`}
     >
       {item.card.info.imageId ? (
         <img className="h-full" src={IMG_CDN_URL + item.card.info.imageId} />
@@ -50,7 +54,9 @@ const ItemListCard = ({ item }) => {
             )}
           </span>
         </div>
-        <p className="text-xs mt-1 text-white">
+        <p
+          className={`text-xs mt-1 ${theme ? "text-white" : "text-[#373737]"}`}
+        >
           {item.card.info.description &&
             item.card.info.description.substring(0, 200)}
         </p>

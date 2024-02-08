@@ -6,11 +6,22 @@ import { IoIosHeart } from "react-icons/io";
 import { FaGithubSquare } from "react-icons/fa";
 import { FaInstagramSquare } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
+import { useSelector } from "react-redux";
 
 const Footer = () => {
+  const theme = useSelector((store) => store.item.theme);
+
   return (
-    <div className="flex items-center justify-center gap-1 text-[#373737] h-16 text-base font-semibold bg-shadow mt-10">
-      <div className="flex items-center relative gap-1">
+    <div
+      className={`flex items-center justify-center gap-1 text-[#373737] h-16 text-base font-semibold border-t-2 bg-shadow ${
+        theme ? "bg-[#373737]" : "bg-white border-black"
+      }`}
+    >
+      <div
+        className={`flex items-center relative gap-1 ${
+          theme ? "text-white" : "text-[#373737]"
+        }`}
+      >
         <a
           onClick={() => {
             toast.info("Redirecting to github", {
@@ -25,7 +36,7 @@ const Footer = () => {
         <FaInstagramSquare className="text-xl" />
         <FaLinkedin className="text-xl" />
       </div>
-      <h3 className="">
+      <h3 className={`${theme ? " text-white" : "text-[#373737]"}`}>
         || Developed by <IoIosHeart className="inline text-red-600" /> Saroj
         Kumar
       </h3>

@@ -2,15 +2,12 @@ import RestaurantCard from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { swiggy_api_URL } from "../constants";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { filterData } from "../Utils/Helper";
 import useResData from "../Hooks/useResData";
 import { FiSearch } from "react-icons/fi";
 import Select from "react-select";
 import { useDispatch, useSelector } from "react-redux";
-import { ReactComponent as Sun } from "../Images/Sun.svg";
-import { ReactComponent as Moon } from "../Images/Moon.svg";
-import {setTheme} from '../Utils/ItemSlice'
 
 const Body = () => {
   const [searchText, setSearchText] = useState("");
@@ -19,7 +16,13 @@ const Body = () => {
   const [filteredRestaurants, setFilteredRestaurants] = useState(null);
   const [selectedOption, setSelectedOption] = useState([]);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const theme = useSelector((store) => store.item.theme);
+  const login = useSelector((store) => store.item.login);
+
+  useEffect(() => {
+    if (login == false) navigate("/");
+  }, []);
 
   const options = [
     { value: "4", label: "Above 4 star" },
@@ -74,16 +77,11 @@ const Body = () => {
     }
   };
 
-  const handleTheme = () => {
-    dispatch(setTheme());
-  };
-
-
   if (!allRestaurants) return <Shimmer />;
 
   return (
-    <div className={`min-h-screen ${theme ? "bg-white" : "bg-[#373737]"}`}>
-      <div className="flex items-center justify-center  relative -top-[54px] ">
+    <div className={`min-h-screen  ${theme ? "bg-[#373737]" : "bg-[#373737]"}`}>
+      <div className="flex items-center justify-center absolute w-full z-10 top-4 -left-20">
         <input
           type="text"
           className="border-y-2 border-l-2 font-bold border-[#B22126] px-2 py-1 rounded-l-sm w-[20vw] focus:outline-none"
@@ -116,25 +114,17 @@ const Body = () => {
           onChange={handleChange}
           className="min-w-40 border-2 text-center rounded-md bg-black border-[#B22126]"
         />
-        <div className="dark_mode">
-          <input
-            className="dark_mode_input"
-            type="checkbox"
-            id="darkmode-toggle"
-            onChange={handleTheme}
-          />
-          <label className="dark_mode_label" for="darkmode-toggle">
-            <Sun />
-            <Moon />
-          </label>
-        </div>
       </div>
       {errorMessage && <div className="error-container">{errorMessage}</div>}
 
       {allRestaurants?.length === 0 && FilterRes?.length === 0 ? (
         <Shimmer />
       ) : (
-        <div className="flex flex-wrap items-center justify-center -mt-8">
+        <div
+          className={`flex flex-wrap items-center justify-center pb-12 pt-4 ${
+            theme ? "bg-[#373737]" : "bg-white"
+          }`}
+        >
           {(filteredRestaurants === null ? FilterRes : filteredRestaurants).map(
             (restaurant) => {
               return (

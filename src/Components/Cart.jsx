@@ -6,6 +6,7 @@ import ItemListCard from "./ItemListCard";
 import { clearCart } from "../Utils/ItemSlice";
 import { MdDeleteForever } from "react-icons/md";
 import useGetValue from "../Utils/getPriceDetail";
+import { useNavigate } from "react-router";
 
 const Cart = () => {
   const [couponValue, setCouponValue] = useState("");
@@ -14,6 +15,14 @@ const Cart = () => {
   const [totalPrice, setTotalPrice] = useState(totalValue);
   const cartItems = useSelector((store) => store.item.cartItems);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const login = useSelector((store) => store.item.login);
+
+  useEffect(() => {
+    if (login == false) navigate("/");
+  }, []);
+
+  const theme = useSelector((store) => store.item.theme);
 
   const handleClear = () => {
     dispatch(clearCart());
@@ -32,12 +41,24 @@ const Cart = () => {
   };
 
   return (
-    <div className="flex items-center justify-center flex-col  ">
-      <div className="flex flex-col items-center justify-center w-8/12 border-b-2 border-[#373737] mt-2 pb-2">
+    <div
+      className={`flex items-center justify-center flex-col ${
+        theme ? "bg-[#373737]" : "bg-white"
+      } `}
+    >
+      <div
+        className={`flex flex-col items-center justify-center w-8/12  mt-2  ${
+          theme ? "border-b-2" : "border-b-2 border-[#373737]"
+        }`}
+      >
         <IoCartSharp className="text-3xl text-[#B22126]" />
-        <h3 className="font-bold text-[#373737]">My Cart Items</h3>
-        <div className="flex w-full justify-around">
-          <h3 className="font-bold ">
+        <h3 className={`font-bold ${theme ? "text-white" : "text-[#373737]"}`}>
+          My Cart Items
+        </h3>
+        <div className={`flex w-full pb-2 justify-around `}>
+          <h3
+            className={`font-bold ${theme ? "text-white" : "text-[#373737]"}`}
+          >
             Total <span className="text-[#B22126]">{cartItems.length}</span>{" "}
             Items
           </h3>
@@ -57,37 +78,79 @@ const Cart = () => {
         </div>
         {cartItems.length != 0 && (
           <div className="w-[21rem] border-2 p-2 h-[65vh] bg-shadow fixed right-24 top-44 rounded-sm">
-            <h3 className="text-center text-lg font-bold text-[#373737] border-b-2 border-[#373737] pb-2 ">
+            <h3
+              className={`text-center text-lg font-bold pb-2 ${
+                theme
+                  ? "text-white border-b-2"
+                  : "text-[#373737] border-b-2 border-[#373737]"
+              }`}
+            >
               Price Details
             </h3>
             <div className="flex flex-col justify-center">
               <div className=" flex justify-center flex-col text-center">
                 <ul className="flex mt-4 ">
-                  <li className="w-6/12 ">Total 3 items</li>
-                  <li className="w-6/12 ">
+                  <li
+                    className={`w-6/12 ${
+                      theme ? "text-white" : "text-[#373737]"
+                    }`}
+                  >
+                    Total 3 items
+                  </li>
+                  <li
+                    className={`w-6/12 ${
+                      theme ? "text-white" : "text-[#373737]"
+                    }`}
+                  >
                     {" "}
                     <FaRupeeSign className="inline text-sm -mt-[2px]" />
                     {totalValue}
                   </li>
                 </ul>
                 <ul className="flex mt-4">
-                  <li className="w-6/12">Discount</li>
-                  <li className="w-6/12">
+                  <li
+                    className={`w-6/12 ${
+                      theme ? "text-white" : "text-[#373737]"
+                    }`}
+                  >
+                    Discount
+                  </li>
+                  <li
+                    className={`w-6/12 ${
+                      theme ? "text-white" : "text-[#373737]"
+                    }`}
+                  >
                     {" "}
                     <FaRupeeSign className="inline text-sm -mt-[2px]" />
                     {parseInt(discount)}
                   </li>
                 </ul>
                 <ul className="flex mt-4">
-                  <li className="w-6/12">Delivery charges</li>
-                  <li className="w-6/12">
+                  <li
+                    className={`w-6/12 ${
+                      theme ? "text-white" : "text-[#373737]"
+                    }`}
+                  >
+                    Delivery charges
+                  </li>
+                  <li
+                    className={`w-6/12 ${
+                      theme ? "text-white" : "text-[#373737]"
+                    }`}
+                  >
                     {" "}
                     <FaRupeeSign className="inline text-sm -mt-[2px]" />
                     {parseInt(deliveryCharge)}
                   </li>
                 </ul>
                 <ul className="flex mt-4">
-                  <li className="w-6/12 text-lg font-bold">Total Amount</li>
+                  <li
+                    className={`w-6/12 font-bold text-lg ${
+                      theme ? "text-white" : "text-[#373737]"
+                    }`}
+                  >
+                    Total Amount
+                  </li>
                   <li className="w-6/12 text-xl font-bold text-green-600">
                     {" "}
                     <FaRupeeSign className="inline text-sm -mt-[2px]" />
@@ -104,12 +167,12 @@ const Cart = () => {
                     }}
                     value={couponValue}
                     type="text"
-                    className="text-center border-2 p-1 focus:outline-none mt-2"
+                    className="text-center w-40 border-2 p-1 focus:outline-none mt-2"
                     placeholder="SAROJ100"
                   />
                   <button
                     onClick={() => onCouponApply()}
-                    className="bg-[#373737]  text-white px-2 py-[5px]"
+                    className={`w-16 px-2 py-[5px] bg-[#B22126] text-white`}
                   >
                     Apply
                   </button>
@@ -121,7 +184,11 @@ const Cart = () => {
                 </button>
               </div>
               <div className="mt-2">
-                <div className="m-1 font-bold text-center mt-2">
+                <div
+                  className={`m-1 font-bold text-center mt-2 ${
+                    theme ? "text-white" : "text-[B373737]"
+                  }`}
+                >
                   Accepted payment{" "}
                 </div>
                 <div className="flex justify-around mt-4">

@@ -18,8 +18,8 @@ const RestaurantCard = ({
   const theme = useSelector((store) => store.item.theme);
   return (
     <div
-      className={`w-[260px] min-h-[45vh] rounded-sm bg-shadow cursor-pointer hover:scale-105 duration-200  m-2 relative p-2 ${
-        theme ? "bg-[#373737]" : "bg-white"
+      className={`w-[260px] min-h-[45vh] rounded-sm bg-shadow cursor-pointer duration-200 hover:scale-105  m-2 relative p-2 ${
+        theme ? "bg-[#373737] card-shadow" : "bg-white card-shadow-black"
       }`}
     >
       <img
@@ -55,33 +55,21 @@ const RestaurantCard = ({
       </span>
 
       <div className="flex absolute top-0 right-0 justify-center items-center mt-2">
-        {avgRatingString > 4 ? (
-          <>
-            {avgRatingString > 4.5 ? (
-              <>
-                {" "}
-                <p className="bg-green-500 font-semibold text-center text-white px-1 py-[1px] rounded-sm text-sm ">
-                  {avgRatingString}
-                  <IoMdStar className="inline -mt-[4px] text-base" />
-                </p>{" "}
-              </>
-            ) : (
-              <>
-                {" "}
-                <p className="bg-yellow-500 font-semibold text-center text-white px-1 py-[1px] rounded-sm text-sm">
-                  {avgRatingString}
-                  <IoMdStar className="inline -mt-[5px] -ml-[2px]" />
-                </p>
-              </>
-            )}
-          </>
+        {avgRatingString > 4.5 ? (
+          <p className="bg-green-500 font-semibold text-center text-white px-1 py-[1px] rounded-sm text-sm ">
+            {avgRatingString}
+            <IoMdStar className="inline -mt-[4px] text-base" />
+          </p>
+        ) : avgRatingString > 4 ? (
+          <p className="bg-yellow-500 font-semibold text-center text-white px-1 py-[1px] rounded-sm text-sm">
+            {avgRatingString}
+            <IoMdStar className="inline -mt-[5px] -ml-[2px]" />
+          </p>
         ) : (
-          <>
-            <p className="bg-red-500 font-semibold text-center text-white px-1 py-[1px] rounded-sm text-sm">
-              {avgRatingString}
-              <IoMdStar className="inline -mt-[5px] -ml-[2px]" />
-            </p>
-          </>
+          <p className="bg-red-500 font-semibold text-center text-white px-1 py-[1px] rounded-sm text-sm">
+            {avgRatingString}
+            <IoMdStar className="inline -mt-[5px] -ml-[2px]" />
+          </p>
         )}
       </div>
     </div>

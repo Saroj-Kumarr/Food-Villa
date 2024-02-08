@@ -1,9 +1,23 @@
-import React from "react";
-import contactImage from "../Images/8690678_3969587.jpg";
+import React, { useEffect } from "react";
+import contactImage from "../Images/contactImage.png";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router";
 
 const Contact = () => {
+  const theme = useSelector((store) => store.item.theme);
+  const navigate = useNavigate();
+  const login = useSelector((store) => store.item.login);
+
+  useEffect(() => {
+    if (login == false) navigate("/");
+  }, []);
+
   return (
-    <div className="h-[75vh] flex justify-center">
+    <div
+      className={`h-[81vh] flex justify-center ${
+        theme ? "bg-[#373737]" : "bg-white"
+      }`}
+    >
       <div className="w-7/12 mt-20 ml-20">
         <h1 className="font-bold text-3xl text-center">Contact me</h1>
         <div className="flex items-center mt-2">
@@ -15,7 +29,11 @@ const Contact = () => {
         </div>
         <div className="flex justify-center items-center mt-2 ">
           <form className=" bg-shadow p-2">
-            <h3 className="font-bold text-lg">
+            <h3
+              className={` font-bold text-xl ${
+                theme ? "text-white" : "text-[#373737]"
+              }`}
+            >
               Message <span className="text-[#B22126]">me</span>
             </h3>
             <div className="flex flex-col">
