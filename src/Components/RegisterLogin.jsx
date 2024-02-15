@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import tree from "../Images/tree.jpg";
 import { FaCircleUser } from "react-icons/fa6";
 import { FaLock } from "react-icons/fa";
@@ -8,12 +8,17 @@ import { useNavigate } from "react-router";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signInWithPopup,
+  GoogleAuthProvider,
+  GithubAuthProvider,
 } from "firebase/auth";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import auth from "../firebase";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setLogin } from "../Utils/ItemSlice";
+import { FcGoogle } from "react-icons/fc";
+import { SiGithub } from "react-icons/si";
 
 const Signup = () => {
   const [isLogin, setIsLogin] = useState(false);
@@ -22,6 +27,54 @@ const Signup = () => {
   const [password, setPassword] = useState(null);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const theme = useSelector((store) => store.item.theme);
+
+  const googleAuthProvider = new GoogleAuthProvider();
+  const githubAuthProvider = new GithubAuthProvider();
+
+  const handleGoogleAuth = () => {
+    signInWithPopup(auth, googleAuthProvider)
+      .then((result) => {
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+        const user = result.user;
+        dispatch(setLogin(true));
+        navigate("/body");
+        toast.success("You are logged in with Google", {
+          position: "top-center",
+          theme: "dark",
+        });
+       
+      })
+      .catch((error) => {
+        toast.error("Failed to logged in with Google", {
+          position: "top-center",
+          theme: "dark",
+        });
+      });
+  };
+
+  const handleGithubAuth = () => {
+    signInWithPopup(auth, githubAuthProvider)
+      .then((result) => {
+        const credential = GithubAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+        const user = result.user;
+        
+        toast.success("You are logged in with Github", {
+          position: "top-center",
+          theme: "dark",
+        });
+        dispatch(setLogin(true));
+        navigate("/body");
+      })
+      .catch((error) => {
+        toast.error("Failed to logged in with Github", {
+          position: "top-center",
+          theme: "dark",
+        });
+      });
+  };
 
   const handleRegister = async () => {
     const emailCheck = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email);
@@ -106,8 +159,14 @@ const Signup = () => {
     }
   };
 
+  if (window.location.pathname == "/") dispatch(setLogin(false));
+
   return (
-    <div className="flex justify-center items-center h-[81vh] bg-[#373737]">
+    <div
+      className={`flex justify-center items-center h-[81vh] ${
+        theme ? "bg-[#373737]" : "bg-white"
+      }`}
+    >
       <div className="flex items-center justify-center flex-col lg:flex-row">
         <img className="" src={foodbg} alt="" />
         <form
@@ -155,14 +214,35 @@ const Signup = () => {
             </div>
           </div>
           {isLogin ? (
-            <button
-              onClick={() => {
-                handleLogin();
-              }}
-              className="p-1 rounded-sm bg-[#B22126] relative left-2 text-white font-bold hover:bg-[#e76854] duration-300"
-            >
-              Login
-            </button>
+            <>
+              <button
+                onClick={() => {
+                  handleLogin();
+                }}
+                className="p-1 rounded-sm bg-[#B22126] relative left-2 text-white font-bold hover:bg-[#e76854] duration-300"
+              >
+                Login
+              </button>
+              <div
+                onClick={() => handleGoogleAuth()}
+                className={`flex py-1 relative left-2 rounded-sm mt-2 items-center justify-center font-bold ${
+                  theme ? "bg-white text-[#373737]" : "bg-[#373737] text-white"
+                }`}
+              >
+                <FcGoogle className="text-xl" />
+                <button className="pl-2">Login with Google</button>
+              </div>
+
+              <div
+                onClick={() => handleGithubAuth()}
+                className={`flex py-1 relative left-2 rounded-sm mt-2 items-center justify-center font-bold ${
+                  theme ? "bg-white text-[#373737]" : "bg-[#373737] text-white"
+                }`}
+              >
+                <SiGithub className="text-xl" />
+                <button className="pl-2">Login with Github</button>
+              </div>
+            </>
           ) : (
             <button
               onClick={() => {

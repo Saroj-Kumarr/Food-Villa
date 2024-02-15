@@ -8,6 +8,7 @@ import useResData from "../Hooks/useResData";
 import { FiSearch } from "react-icons/fi";
 import Select from "react-select";
 import { useDispatch, useSelector } from "react-redux";
+import { setLogin } from "../Utils/ItemSlice";
 
 const Body = () => {
   const [searchText, setSearchText] = useState("");
@@ -20,9 +21,10 @@ const Body = () => {
   const theme = useSelector((store) => store.item.theme);
   const login = useSelector((store) => store.item.login);
 
+
   useEffect(() => {
     if (login == false) navigate("/");
-  }, []);
+  }, [login]);
 
   const options = [
     { value: "4", label: "Above 4 star" },
@@ -31,6 +33,7 @@ const Body = () => {
     { value: "undefined", label: "Only non-veg" },
     { value: "3.0 km", label: "Under 3.0 km" },
     { value: "₹200 for two", label: "₹200 for two" },
+    { value: "FLAT DEAL", label: "FLAT DEAL" },
     { value: "reset", label: "Reset Filter" },
   ];
 
@@ -49,6 +52,11 @@ const Body = () => {
           return res.info.sla.lastMileTravelString < selectedOption.value;
         case "₹200 for two":
           return res.info.costForTwo === selectedOption.value;
+        case "FLAT DEAL":
+          return (
+            res.info.aggregatedDiscountInfoV3.discountTag &&
+            res.info.aggregatedDiscountInfoV3.discountTag
+          );
       }
     });
 
@@ -91,7 +99,7 @@ const Body = () => {
             setSearchText(e.target.value);
           }}
         />
-        <div className="flex gap-1 items-center text-base bg-[#B22126] rounded-sm text-white py-[6px] px-1 rounded-r-sm font-bold">
+        <div className="flex gap-1 items-center text-base bg-[#B22126] rounded-sm text-white py-[5.5px] px-1 rounded-r-sm font-bold">
           <button
             onClick={() => {
               searchData(searchText, allRestaurants);

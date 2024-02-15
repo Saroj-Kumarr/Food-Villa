@@ -12,15 +12,17 @@ import { useEffect } from "react";
 const RestaurantMenu = () => {
   const { resId } = useParams();
   const navigate = useNavigate();
-  const login = useSelector((store) => store.item.login);
+  // const login = useSelector((store) => store.item.login);
 
-  useEffect(() => {
-    if (login == false) navigate("/");
-  }, []);
+  // useEffect(() => {
+  //   if (login == false) navigate("/");
+  // }, []);
 
   const theme = useSelector((store) => store.item.theme);
 
   const resInfo = useRestaurantMenu(resId);
+
+  console.log(resInfo);
 
   if (!resInfo) return <RestaurantMenuShimmer />;
 
@@ -50,7 +52,13 @@ const RestaurantMenu = () => {
               alt={name}
             />
             <div className="flex flex-col">
-              <h2 className="text-2xl font-bold">{name}</h2>
+              <h2
+                className={`text-2xl font-bold ${
+                  theme ? "text-white" : "text-[#373737]"
+                }`}
+              >
+                {name}
+              </h2>
               <p className="text-teal-500 font-bold">{cuisines?.join(", ")}</p>
               <div className="flex gap-3 mt-1">
                 <div>

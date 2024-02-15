@@ -15,15 +15,17 @@ import { Provider } from "react-redux";
 import store from "./Utils/store";
 import Contact from "./Components/Contact";
 import About from "./Components/About";
+import OrderSuccess from "./Components/OrderSuccess";
 
 const AppLayout = () => {
   return (
     <React.Fragment>
       <Provider store={store}>
         <Header />
+        {/* <OrderSuccess /> */}
         <Outlet />
         <Footer />
-        <ToastContainer />
+        <ToastContainer autoClose={2000} />
       </Provider>
     </React.Fragment>
   );

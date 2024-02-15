@@ -7,6 +7,11 @@ import { clearCart } from "../Utils/ItemSlice";
 import { MdDeleteForever } from "react-icons/md";
 import useGetValue from "../Utils/getPriceDetail";
 import { useNavigate } from "react-router";
+import { FaStripe } from "react-icons/fa";
+import { SiPaytm } from "react-icons/si";
+import { FaGooglePay } from "react-icons/fa";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Cart = () => {
   const [couponValue, setCouponValue] = useState("");
@@ -16,11 +21,11 @@ const Cart = () => {
   const cartItems = useSelector((store) => store.item.cartItems);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const login = useSelector((store) => store.item.login);
+  // const login = useSelector((store) => store.item.login);
 
-  useEffect(() => {
-    if (login == false) navigate("/");
-  }, []);
+  // useEffect(() => {
+  //   if (login == false) navigate("/");
+  // }, []);
 
   const theme = useSelector((store) => store.item.theme);
 
@@ -28,6 +33,10 @@ const Cart = () => {
     dispatch(clearCart());
     setTotalPrice(0);
     setAvail(false);
+    toast.error("All cart items deleted", {
+      position: "top-center",
+      theme: "dark",
+    });
   };
 
   const onCouponApply = () => {
@@ -36,7 +45,6 @@ const Cart = () => {
       setAvail(true);
       setCouponValue("");
     } else {
-      console.log("You're coupon is already applied");
     }
   };
 
@@ -191,27 +199,15 @@ const Cart = () => {
                 >
                   Accepted payment{" "}
                 </div>
-                <div className="flex justify-around mt-4">
-                  <button>
-                    <img
-                      className="h-7 border-2 border-blue-400 p-1 "
-                      src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Paytm_Logo_%28standalone%29.svg/2560px-Paytm_Logo_%28standalone%29.svg.png"
-                      alt="paytm"
-                    />
+                <div className="flex justify-around items-center mt-4 ">
+                  <button className="bg-[#6772E5] text-white px-2 h-7 rounded-sm flex items-center justify-center">
+                    <FaStripe className="text-5xl" />
                   </button>
-                  <button>
-                    <img
-                      className="h-7 border-2 border-purple-700 p-[2px]"
-                      src="https://cdn.worldvectorlogo.com/logos/phonepe-1.svg"
-                      alt="phonepe"
-                    />
+                  <button className="bg-[#00AFF0] text-white px-2 h-7 rounded-sm flex items-center justify-center">
+                    <SiPaytm className="text-5xl" />
                   </button>
-                  <button>
-                    <img
-                      className="h-7 w-20 border-2 border-green-600 p-1 "
-                      src="https://assets.stickpng.com/images/60e7f964711cf700048b6a6a.png"
-                      alt="googlepay"
-                    />
+                  <button className="bg-[#006FFF] text-white px-2 h-7 rounded-sm flex items-center justify-center">
+                    <FaGooglePay className="text-5xl" />
                   </button>
                 </div>
               </div>

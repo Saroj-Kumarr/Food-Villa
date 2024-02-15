@@ -13,8 +13,14 @@ const RestaurantCard = ({
   avgRatingString,
   isOpen,
   veg,
+  aggregatedDiscountInfoV3,
 }) => {
   const dispatch = useDispatch();
+
+  const { header, discountTag, subHeader } = aggregatedDiscountInfoV3 || {};
+
+
+
   const theme = useSelector((store) => store.item.theme);
   return (
     <div
@@ -46,6 +52,17 @@ const RestaurantCard = ({
           {costForTwo ?? "₹200 for two"}
         </p>
       </span>
+      <div className="flex justify-center gap-3 mt-1 items-center">
+        <p className="font-bold text-yellow-500">{header}</p>
+        <p className="font-bold  text-yellow-500">{subHeader}</p>
+      </div>
+
+      {discountTag && (
+        <p className="font-bold absolute top-2 left-2  bg-green-500 px-1 py-1 text-white">
+          {discountTag}
+        </p>
+      )}
+
       <span className="text-white absolute bottom-0 w-[94%]">
         {veg ? (
           <p className="bg-green-500 text-center">veg</p>

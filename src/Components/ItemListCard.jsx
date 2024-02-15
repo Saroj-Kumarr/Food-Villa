@@ -6,6 +6,9 @@ import { FaMinusSquare } from "react-icons/fa";
 import ImageShimmer from "./ImageShimmer";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, deleteToCart } from "../Utils/ItemSlice";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 const ItemListCard = ({ item }) => {
   const dispatch = useDispatch();
@@ -14,12 +17,20 @@ const ItemListCard = ({ item }) => {
 
   const handleAddClick = (e) => {
     dispatch(addToCart(item));
+    toast.success(`${item.card.info.name} added`, {
+      position: "top-center",
+      theme: "dark",
+    });
 
     e.stopPropagation();
   };
 
   const handleDeleteClick = (e) => {
     dispatch(deleteToCart(item));
+    toast.error(`${item.card.info.name} deleted`, {
+      position: "top-center",
+      theme: "dark",
+    });
 
     e.stopPropagation();
   };
@@ -29,12 +40,12 @@ const ItemListCard = ({ item }) => {
   return (
     <div
       key={item.card.info.id}
-      className={`p-2 mt-3 gap-1 bg-shadow duration-200 flex h-32 w-full ${
+      className={`p-2 mt-3 gap-1 bg-shadow duration-200 flex min-h-32 w-full ${
         theme ? "bg-[#373737]" : "bg-white"
       }`}
     >
       {item.card.info.imageId ? (
-        <img className="h-full" src={IMG_CDN_URL + item.card.info.imageId} />
+        <img className="h-28" src={IMG_CDN_URL + item.card.info.imageId} />
       ) : (
         <ImageShimmer />
       )}

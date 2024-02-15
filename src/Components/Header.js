@@ -4,7 +4,7 @@ import { FiSearch } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { FaShoppingCart } from "react-icons/fa";
-import { setTheme } from "../Utils/ItemSlice";
+import { setLogin, setTheme } from "../Utils/ItemSlice";
 import { ReactComponent as Sun } from "../Images/Sun.svg";
 import { ReactComponent as Moon } from "../Images/Moon.svg";
 import { getAuth, signOut } from "firebase/auth";
@@ -14,6 +14,7 @@ import "react-toastify/dist/ReactToastify.css";
 const Header = () => {
   const theme = useSelector((store) => store.item.theme);
   const cartItems = useSelector((store) => store.item.cartItems);
+  const login = useSelector((store) => store.item.login);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -29,6 +30,7 @@ const Header = () => {
           position: "top-center",
           theme: "dark",
         });
+        dispatch(setLogin(false));
         navigate("/");
       })
       .catch((error) => {
@@ -66,45 +68,52 @@ const Header = () => {
             <Moon />
           </label>
         </div>
-        <li className="bg-[#B22126] px-2 py-[2px] text-white rounded-sm hover:bg-[#a31b1f]">
-          <Link to="/body">Home</Link>
-        </li>
-        <li
-          className={`px-2 py-[2px] rounded-sm ${
-            theme ? "bg-white text-[#373737]" : "bg-[#373737] text-white"
-          }`}
-        >
-          <Link to="/cart">
-            Cart{" "}
-            <span
-              className={` px-1 rounded-full ${
-                theme ? "bg-[#373737] text-white " : "bg-white text-[#373737]"
+        {login && (
+          <>
+            {" "}
+            <li className="bg-[#B22126] px-2 py-[2px] text-white rounded-sm hover:bg-[#a31b1f]">
+              <Link to="/body">Home</Link>
+            </li>
+            <li
+              className={`px-2 py-[2px] rounded-sm ${
+                theme ? "bg-white text-[#373737]" : "bg-[#373737] text-white"
               }`}
             >
-              {cartItems.length}
-            </span>
-          </Link>
-        </li>
-        <li
-          className={`px-2 py-[2px] rounded-sm ${
-            theme ? "bg-white text-[#373737]" : "bg-[#373737] text-white"
-          }`}
-        >
-          <Link to="/contact">Contact</Link>
-        </li>
-        <li
-          className={`px-2 py-[2px] rounded-sm ${
-            theme ? "bg-white text-[#373737]" : "bg-[#373737] text-white"
-          }`}
-        >
-          <Link to="/about">About</Link>
-        </li>
-        <li
-          onClick={() => handleSignOut()}
-          className="bg-[#B22126] px-2 py-[2px] text-white rounded-sm hover:bg-[#a31b1f]"
-        >
-          <Link to="/">Logout</Link>
-        </li>
+              <Link to="/cart">
+                Cart{" "}
+                <span
+                  className={` px-1 rounded-full ${
+                    theme
+                      ? "bg-[#373737] text-white "
+                      : "bg-white text-[#373737]"
+                  }`}
+                >
+                  {cartItems.length}
+                </span>
+              </Link>
+            </li>
+            <li
+              className={`px-2 py-[2px] rounded-sm ${
+                theme ? "bg-white text-[#373737]" : "bg-[#373737] text-white"
+              }`}
+            >
+              <Link to="/contact">Contact</Link>
+            </li>
+            <li
+              className={`px-2 py-[2px] rounded-sm ${
+                theme ? "bg-white text-[#373737]" : "bg-[#373737] text-white"
+              }`}
+            >
+              <Link to="/about">About</Link>
+            </li>
+            <li
+              onClick={() => handleSignOut()}
+              className="bg-[#B22126] px-2 py-[2px] text-white rounded-sm hover:bg-[#a31b1f]"
+            >
+              <Link to="/">Logout</Link>
+            </li>{" "}
+          </>
+        )}
       </ul>
     </div>
   );
