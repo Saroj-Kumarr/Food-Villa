@@ -1,11 +1,12 @@
-import { CreateSliceOptions, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 const itemSlice = createSlice({
   name: "item",
   initialState: {
     cartItems: [],
     theme: true,
-    login: true,
+    login: false,
+    isLogin: false,
   },
   reducers: {
     addToCart: (state, action) => {
@@ -28,10 +29,19 @@ const itemSlice = createSlice({
     setLogin: (state, action) => {
       state.login = action.payload;
     },
+    setIsLogin: (state, action) => {
+      state.isLogin = action.payload;
+    },
   },
 });
 
-export const { addToCart, deleteToCart, clearCart, setTheme, setLogin } =
-  itemSlice.actions;
+export const {
+  addToCart,
+  deleteToCart,
+  clearCart,
+  setTheme,
+  setLogin,
+  setIsLogin,
+} = itemSlice.actions;
 
 export default itemSlice.reducer;

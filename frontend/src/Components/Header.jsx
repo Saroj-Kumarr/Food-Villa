@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import foodlogo from "../Images/logo.png";
 import { FiSearch } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
@@ -26,11 +26,12 @@ const Header = () => {
     const auth = getAuth();
     signOut(auth)
       .then(() => {
-        toast.success("You're logged out", {
+        toast.success("You're logged out.", {
           position: "top-center",
           theme: "dark",
         });
         dispatch(setLogin(false));
+        sessionStorage.setItem("isLogin", "false");
         navigate("/");
       })
       .catch((error) => {
@@ -38,13 +39,14 @@ const Header = () => {
       });
   };
 
+
   return (
     <div
       className={`flex justify-between px-10 items-center border-b-2 bg-shadow ${
         theme ? "bg-[#373737]" : "bg-white border-black"
       }`}
     >
-      <div className=" flex items-center">
+      <div className=" flex items-center gap-1">
         <img className="w-28" src={foodlogo} alt="" />
         <h3
           className={`text-2xl font-bold -ml-2 ${
@@ -52,6 +54,7 @@ const Header = () => {
           }`}
         >
           Food <span className="text-[#B22126]">Villa</span>{" "}
+          {/* <p className="text-sm">Hii👋 <span className=" text-base">{name}</span></p> */}
         </h3>
       </div>
 

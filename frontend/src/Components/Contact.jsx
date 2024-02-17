@@ -10,6 +10,12 @@ const Contact = () => {
   const theme = useSelector((store) => store.item.theme);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    if (!sessionStorage.getItem("isLogin")) {
+      navigate("/");
+    }
+  }, []);
+
   const form = useRef();
 
   const sendEmail = (e) => {

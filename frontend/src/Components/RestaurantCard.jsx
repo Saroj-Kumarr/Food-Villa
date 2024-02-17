@@ -1,7 +1,7 @@
 import { IMG_CDN_URL } from "../constants";
 import { IoMdStar } from "react-icons/io";
 import { LiaDotCircle } from "react-icons/lia";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 const RestaurantCard = ({
   cloudinaryImageId,
@@ -11,15 +11,10 @@ const RestaurantCard = ({
   sla,
   costForTwo,
   avgRatingString,
-  isOpen,
   veg,
   aggregatedDiscountInfoV3,
 }) => {
-  const dispatch = useDispatch();
-
   const { header, discountTag, subHeader } = aggregatedDiscountInfoV3 || {};
-
-
 
   const theme = useSelector((store) => store.item.theme);
   return (
@@ -52,7 +47,7 @@ const RestaurantCard = ({
           {costForTwo ?? "₹200 for two"}
         </p>
       </span>
-      <div className="flex justify-center gap-3 mt-1 items-center">
+      <div className="flex justify-center gap-3 items-center">
         <p className="font-bold text-yellow-500">{header}</p>
         <p className="font-bold  text-yellow-500">{subHeader}</p>
       </div>
@@ -65,9 +60,9 @@ const RestaurantCard = ({
 
       <span className="text-white absolute bottom-0 w-[94%]">
         {veg ? (
-          <p className="bg-green-500 text-center">veg</p>
+          <p className="bg-green-500 text-center mb-1 rounded-sm">veg</p>
         ) : (
-          <p className="bg-[#B22126] text-center">nog-veg</p>
+          <p className="bg-[#B22126] text-center mb-1 rounded-sm">nog-veg</p>
         )}
       </span>
 

@@ -28,7 +28,6 @@ app.post("/order", async (req, res) => {
 
     res.json(order);
   } catch (err) {
-    console.log(err);
     res.status(500).send("Error");
   }
 });

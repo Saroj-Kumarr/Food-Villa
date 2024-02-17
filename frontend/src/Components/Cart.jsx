@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import {  FaRupeeSign } from "react-icons/fa";
+import React, { useEffect, useState } from "react";
+import { FaRupeeSign } from "react-icons/fa";
 import { IoCartSharp } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
 import ItemListCard from "./ItemListCard";
@@ -50,11 +50,18 @@ const Cart = () => {
     }
   };
 
+  useEffect(() => {
+    setTotalPrice(totalValue);
+    if (!sessionStorage.getItem("isLogin")) {
+      navigate("/");
+    }
+  }, [cartItems]);
+
   const paymentHandler = async (e) => {
     const response = await fetch("http://localhost:8000/order", {
       method: "POST",
       body: JSON.stringify({
-        amount: parseInt(totalPrice + deliveryCharge - discount)*100,
+        amount: parseInt(totalPrice + deliveryCharge - discount) * 100,
         currency: "INR",
         receipt: "qwsaq1",
       }),
@@ -66,7 +73,7 @@ const Cart = () => {
 
     var options = {
       key: "rzp_test_o3OG8LG9cCAqvZ",
-      amount: parseInt(totalPrice + deliveryCharge - discount)*100 ,
+      amount: parseInt(totalPrice + deliveryCharge - discount) * 100,
       currency: "INR",
       name: "Food Villa",
       description: "Razorpay payment gateway",
@@ -88,7 +95,7 @@ const Cart = () => {
           }
         );
         const jsonRes = await validateRes.json();
-        navigate('/cart/ordersuccess');
+        navigate("/cart/ordersuccess");
       },
       prefill: {
         name: "Saroj Kumar",
@@ -117,9 +124,6 @@ const Cart = () => {
     rzp1.open();
     e.preventDefault();
   };
-
-
-
 
   return (
     <div

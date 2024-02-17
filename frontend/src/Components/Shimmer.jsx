@@ -5,7 +5,7 @@ import React from "react";
 const Shimmer = () => {
   return (
     <div className="shimmer-container flex flex-wrap justify-center items-center">
-      {[...Array(10)].map((_, index) => (
+      {[...Array(20)].map((_, index) => (
         <div
           key={index}
           className="shimmer-cards m-2 bg-shadow rounded-sm"

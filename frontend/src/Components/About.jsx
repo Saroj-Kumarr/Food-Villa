@@ -9,8 +9,11 @@ const About = () => {
   const login = useSelector((store) => store.item.login);
 
   useEffect(() => {
-    if (login == false) navigate("/");
+    if (!sessionStorage.getItem("isLogin")) {
+      navigate("/");
+    }
   }, []);
+  
 
   return (
     <div

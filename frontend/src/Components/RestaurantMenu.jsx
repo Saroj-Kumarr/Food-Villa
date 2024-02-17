@@ -1,6 +1,4 @@
-import Shimmer from "./Shimmer";
-import { useNavigate, useParams, useResolvedPath } from "react-router";
-
+import {  useNavigate, useParams} from "react-router";
 import useRestaurantMenu from "../Hooks/useResMenuData";
 import RestaurantCategories from "./RestaurantCategories";
 import { IMG_CDN_URL } from "../constants";
@@ -11,18 +9,17 @@ import { useEffect } from "react";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
-  const navigate = useNavigate();
-  // const login = useSelector((store) => store.item.login);
-
-  // useEffect(() => {
-  //   if (login == false) navigate("/");
-  // }, []);
-
   const theme = useSelector((store) => store.item.theme);
 
-  const resInfo = useRestaurantMenu(resId);
+  const navigate = useNavigate();
 
-  console.log(resInfo);
+  useEffect(() => {
+    if (!sessionStorage.getItem("isLogin")) {
+      navigate("/");
+    }
+  }, []);
+
+  const resInfo = useRestaurantMenu(resId);
 
   if (!resInfo) return <RestaurantMenuShimmer />;
 

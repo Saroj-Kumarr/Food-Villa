@@ -8,11 +8,13 @@ import useResData from "../Hooks/useResData";
 import { FiSearch } from "react-icons/fi";
 import Select from "react-select";
 import { useDispatch, useSelector } from "react-redux";
+import restaurantImage from "../Images/restaurant.jpg";
+import { FaHandsPraying } from "react-icons/fa6";
 import { setLogin } from "../Utils/ItemSlice";
 
 const Body = () => {
   const [searchText, setSearchText] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState(false);
   const [allRestaurants, FilterRes] = useResData(swiggy_api_URL);
   const [filteredRestaurants, setFilteredRestaurants] = useState(null);
   const [selectedOption, setSelectedOption] = useState([]);
@@ -67,17 +69,22 @@ const Body = () => {
     if (searchText !== "") {
       const filteredData = filterData(searchText, restaurants);
       setFilteredRestaurants(filteredData);
-      setErrorMessage("");
+      setErrorMessage(false);
       if (filteredData?.length === 0) {
-        setErrorMessage(
-          `Sorry, we couldn't find any results for "${searchText}"`
-        );
+        setErrorMessage(true);
       }
     } else {
-      setErrorMessage("");
+      setErrorMessage(false);
       setFilteredRestaurants(restaurants);
     }
   };
+
+  useEffect(() => {
+    if (!sessionStorage.getItem("isLogin")) {
+      navigate("/");
+    }
+    dispatch(setLogin(true))
+  }, []);
 
   if (!allRestaurants) return <Shimmer />;
 
@@ -87,10 +94,18 @@ const Body = () => {
         <input
           type="text"
           className="border-y-2 border-l-2 font-bold border-[#B22126] px-2 py-1 rounded-l-sm w-[20vw] focus:outline-none"
-          placeholder="Search a restaurant you want..."
+          placeholder={`Hii👋 ${
+            sessionStorage.getItem("user") ||
+            localStorage.getItem(localStorage.getItem("userinfo"))
+          } search here...`}
           value={searchText}
           onChange={(e) => {
             setSearchText(e.target.value);
+          }}
+          onKeyDown={(e) => {
+            if (e.key == "Enter") {
+              searchData(searchText, allRestaurants);
+            }
           }}
         />
         <div className="flex gap-1 items-center text-base bg-[#B22126] rounded-sm text-white py-[5.5px] px-1 rounded-r-sm font-bold">
@@ -117,13 +132,28 @@ const Body = () => {
           className="min-w-40 border-2 text-center rounded-md bg-black border-[#B22126]"
         />
       </div>
-      {errorMessage && <div className="error-container">{errorMessage}</div>}
+      {errorMessage && (
+        <div
+          className={`flex-col flex justify-center items-center h-[90vh] ${
+            theme ? "bg-[#373737] text-white" : "bg-white text-[#373737]"
+          }`}
+        >
+          <div className="shadow-md">
+            <img className="h-60 rounded-sm" src={restaurantImage} alt="" />
+            <p className=" text-center m-2">
+              sorry{" "}
+              <FaHandsPraying className="inline ml-[2px] text-[#F7C19B] mr-1" />{" "}
+              {searchText} restaurant is not in our list.
+            </p>
+          </div>
+        </div>
+      )}
 
       {allRestaurants?.length === 0 && FilterRes?.length === 0 ? (
         <Shimmer />
       ) : (
         <div
-          className={`flex flex-wrap items-center justify-center pb-12 pt-4 ${
+          className={`flex flex-wrap gap-2 items-center justify-center pb-12 pt-4 ${
             theme ? "bg-[#373737]" : "bg-white"
           }`}
         >

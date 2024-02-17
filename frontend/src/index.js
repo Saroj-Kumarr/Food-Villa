@@ -5,9 +5,7 @@ import Body from "./Components/Body";
 import Footer from "./Components/Footer";
 import Error from "./Components/Error";
 import RestaurantMenu from "./Components/RestaurantMenu";
-import RegisterLogin from "./Components/RegisterLogin";
 import "./index.css";
-
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import Cart from "./Components/Cart";
@@ -16,6 +14,9 @@ import store from "./Utils/store";
 import Contact from "./Components/Contact";
 import About from "./Components/About";
 import OrderSuccess from "./Components/OrderSuccess";
+import Register from "./Components/Register";
+import Login from "./Components/Login";
+import OrderDetails from "./Components/OrderDetails";
 
 const AppLayout = () => {
   return (
@@ -38,7 +39,11 @@ const appRouter = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <RegisterLogin />,
+        element: <Register />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
       },
       {
         path: "/body",
@@ -63,6 +68,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/cart/ordersuccess",
         element: <OrderSuccess />,
+      },
+      {
+        path: "/cart/ordersuccess/orderdetails",
+        element: <OrderDetails />,
       },
     ],
   },

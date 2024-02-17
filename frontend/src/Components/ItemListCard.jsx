@@ -3,12 +3,10 @@ import { IMG_CDN_URL } from "../constants";
 import { FaRupeeSign } from "react-icons/fa";
 import { FaPlusSquare } from "react-icons/fa";
 import { FaMinusSquare } from "react-icons/fa";
-import ImageShimmer from "./ImageShimmer";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, deleteToCart } from "../Utils/ItemSlice";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
 
 const ItemListCard = ({ item }) => {
   const dispatch = useDispatch();
@@ -40,14 +38,21 @@ const ItemListCard = ({ item }) => {
   return (
     <div
       key={item.card.info.id}
-      className={`p-2 mt-3 gap-1 bg-shadow duration-200 flex min-h-32 w-full ${
+      className={`p-2 mt-3 gap-2 bg-shadow duration-200 flex min-h-32 w-full ${
         theme ? "bg-[#373737]" : "bg-white"
       }`}
     >
       {item.card.info.imageId ? (
-        <img className="h-28" src={IMG_CDN_URL + item.card.info.imageId} />
+        <img
+          className="h-28 bg-shadow hover:scale-105 duration-200  "
+          src={IMG_CDN_URL + item.card.info.imageId}
+        />
       ) : (
-        <ImageShimmer />
+        <div
+          className={`h-28 bg-shadow  w-44 ${
+            theme ? "bg-[#6c6969]" : "bg-[#E8E6E7]"
+          }`}
+        ></div>
       )}
 
       <div className="w-9/12">
