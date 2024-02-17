@@ -19,12 +19,6 @@ const Body = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const theme = useSelector((store) => store.item.theme);
-  const login = useSelector((store) => store.item.login);
-
-
-  useEffect(() => {
-    if (login == false) navigate("/");
-  }, [login]);
 
   const options = [
     { value: "4", label: "Above 4 star" },

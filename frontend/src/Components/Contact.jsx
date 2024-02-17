@@ -9,11 +9,6 @@ import "react-toastify/dist/ReactToastify.css";
 const Contact = () => {
   const theme = useSelector((store) => store.item.theme);
   const navigate = useNavigate();
-  const login = useSelector((store) => store.item.login);
-
-  useEffect(() => {
-    if (login == false) navigate("/");
-  }, []);
 
   const form = useRef();
 

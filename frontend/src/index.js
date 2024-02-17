@@ -22,7 +22,6 @@ const AppLayout = () => {
     <React.Fragment>
       <Provider store={store}>
         <Header />
-        {/* <OrderSuccess /> */}
         <Outlet />
         <Footer />
         <ToastContainer autoClose={2000} />
@@ -60,6 +59,10 @@ const appRouter = createBrowserRouter([
       {
         path: "restaurant/:resId",
         element: <RestaurantMenu />,
+      },
+      {
+        path: "/cart/ordersuccess",
+        element: <OrderSuccess />,
       },
     ],
   },

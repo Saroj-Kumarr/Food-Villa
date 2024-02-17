@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { FaMinusSquare, FaRupeeSign } from "react-icons/fa";
+import React, { useState } from "react";
+import {  FaRupeeSign } from "react-icons/fa";
 import { IoCartSharp } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
 import ItemListCard from "./ItemListCard";
@@ -21,11 +21,13 @@ const Cart = () => {
   const cartItems = useSelector((store) => store.item.cartItems);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  // const login = useSelector((store) => store.item.login);
 
-  // useEffect(() => {
-  //   if (login == false) navigate("/");
-  // }, []);
+  const paymentMessage = () => {
+    toast.info("Click on Proceed to payment", {
+      position: "top-center",
+      theme: "dark",
+    });
+  };
 
   const theme = useSelector((store) => store.item.theme);
 
@@ -47,6 +49,77 @@ const Cart = () => {
     } else {
     }
   };
+
+  const paymentHandler = async (e) => {
+    const response = await fetch("http://localhost:8000/order", {
+      method: "POST",
+      body: JSON.stringify({
+        amount: parseInt(totalPrice + deliveryCharge - discount)*100,
+        currency: "INR",
+        receipt: "qwsaq1",
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const order = await response.json();
+
+    var options = {
+      key: "rzp_test_o3OG8LG9cCAqvZ",
+      amount: parseInt(totalPrice + deliveryCharge - discount)*100 ,
+      currency: "INR",
+      name: "Food Villa",
+      description: "Razorpay payment gateway",
+      image: "https://example.com/your_logo",
+      order_id: order.id,
+      handler: async function (response) {
+        const body = {
+          ...response,
+        };
+
+        const validateRes = await fetch(
+          "http://localhost:8000/order/validate",
+          {
+            method: "POST",
+            body: JSON.stringify(body),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+        const jsonRes = await validateRes.json();
+        navigate('/cart/ordersuccess');
+      },
+      prefill: {
+        name: "Saroj Kumar",
+        email: "saroj@gmail.com",
+        contact: "8638316090",
+      },
+      notes: {
+        address: "Razorpay Corporate Office",
+      },
+      theme: {
+        color: "#3399cc",
+      },
+    };
+
+    var rzp1 = new window.Razorpay(options);
+
+    rzp1.on("payment.failed", function (response) {
+      alert(response.error.code);
+      alert(response.error.description);
+      alert(response.error.source);
+      alert(response.error.step);
+      alert(response.error.reason);
+      alert(response.error.metadata.order_id);
+      alert(response.error.metadata.payment_id);
+    });
+    rzp1.open();
+    e.preventDefault();
+  };
+
+
+
 
   return (
     <div
@@ -187,8 +260,11 @@ const Cart = () => {
                 </div>
               </div>
               <div className="flex items-center justify-center">
-                <button className="bg-green-500 py-2 w-10/12 mt-2 text-white rounded-sm bg-shadow hover:bg-green-600 duration-200">
-                  Proceed to buy
+                <button
+                  onClick={(e) => paymentHandler(e)}
+                  className="bg-green-500 py-2 w-10/12 mt-2 text-white rounded-sm bg-shadow hover:bg-green-600 duration-200"
+                >
+                  Proceed to payment
                 </button>
               </div>
               <div className="mt-2">
@@ -200,13 +276,22 @@ const Cart = () => {
                   Accepted payment{" "}
                 </div>
                 <div className="flex justify-around items-center mt-4 ">
-                  <button className="bg-[#6772E5] text-white px-2 h-7 rounded-sm flex items-center justify-center">
+                  <button
+                    onClick={() => paymentMessage()}
+                    className="bg-[#6772E5] text-white px-2 h-7 rounded-sm flex items-center justify-center"
+                  >
                     <FaStripe className="text-5xl" />
                   </button>
-                  <button className="bg-[#00AFF0] text-white px-2 h-7 rounded-sm flex items-center justify-center">
+                  <button
+                    onClick={() => paymentMessage()}
+                    className="bg-[#00AFF0] text-white px-2 h-7 rounded-sm flex items-center justify-center"
+                  >
                     <SiPaytm className="text-5xl" />
                   </button>
-                  <button className="bg-[#006FFF] text-white px-2 h-7 rounded-sm flex items-center justify-center">
+                  <button
+                    onClick={() => paymentMessage()}
+                    className="bg-[#006FFF] text-white px-2 h-7 rounded-sm flex items-center justify-center"
+                  >
                     <FaGooglePay className="text-5xl" />
                   </button>
                 </div>
