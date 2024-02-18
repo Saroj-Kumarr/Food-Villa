@@ -95,6 +95,7 @@ const Cart = () => {
           }
         );
         const jsonRes = await validateRes.json();
+
         navigate("/cart/ordersuccess");
       },
       prefill: {

@@ -83,7 +83,7 @@ const Body = () => {
     if (!sessionStorage.getItem("isLogin")) {
       navigate("/");
     }
-    dispatch(setLogin(true))
+    // dispatch(setLogin(true))
   }, []);
 
   if (!allRestaurants) return <Shimmer />;

@@ -61,6 +61,7 @@ const Signup = () => {
         const token = credential.accessToken;
         const user = result.user;
 
+
         sessionStorage.setItem("user", user.displayName);
 
         sessionStorage.setItem('isLogin',"true");

@@ -15,8 +15,8 @@ const OrderDetails = () => {
       navigate("/");
     }
   }, []);
-  
 
+  
   return (
     <div
       className={`flex min-h-[90vh] justify-center ${

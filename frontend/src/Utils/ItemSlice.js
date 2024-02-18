@@ -5,7 +5,7 @@ const itemSlice = createSlice({
   initialState: {
     cartItems: [],
     theme: true,
-    login: false,
+    login: true,
     isLogin: false,
   },
   reducers: {
