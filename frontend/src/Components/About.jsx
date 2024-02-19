@@ -6,7 +6,6 @@ import { useNavigate } from "react-router";
 const About = () => {
   const theme = useSelector((store) => store.item.theme);
   const navigate = useNavigate();
-  const login = useSelector((store) => store.item.login);
 
   useEffect(() => {
     if (!sessionStorage.getItem("isLogin")) {

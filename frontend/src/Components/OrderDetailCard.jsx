@@ -1,7 +1,6 @@
 import { IMG_CDN_URL } from "../constants";
 import { FaRupeeSign } from "react-icons/fa";
 import { FcOk } from "react-icons/fc";
-import { MdOutlineDownloadDone } from "react-icons/md";
 import { useSelector } from "react-redux";
 
 const OrderDetailCard = ({ item }) => {

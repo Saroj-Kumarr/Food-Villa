@@ -10,7 +10,6 @@ import Select from "react-select";
 import { useDispatch, useSelector } from "react-redux";
 import restaurantImage from "../Images/restaurant.jpg";
 import { FaHandsPraying } from "react-icons/fa6";
-import { setLogin } from "../Utils/ItemSlice";
 
 const Body = () => {
   const [searchText, setSearchText] = useState("");
@@ -83,7 +82,6 @@ const Body = () => {
     if (!sessionStorage.getItem("isLogin")) {
       navigate("/");
     }
-    // dispatch(setLogin(true))
   }, []);
 
   if (!allRestaurants) return <Shimmer />;

@@ -58,7 +58,7 @@ const Cart = () => {
   }, [cartItems]);
 
   const paymentHandler = async (e) => {
-    const response = await fetch("http://localhost:8000/order", {
+    const response = await fetch("https://foodvilla-8f6g.onrender.com/order", {
       method: "POST",
       body: JSON.stringify({
         amount: parseInt(totalPrice + deliveryCharge - discount) * 100,
@@ -85,7 +85,7 @@ const Cart = () => {
         };
 
         const validateRes = await fetch(
-          "http://localhost:8000/order/validate",
+          "https://foodvilla-8f6g.onrender.com/order/validate",
           {
             method: "POST",
             body: JSON.stringify(body),

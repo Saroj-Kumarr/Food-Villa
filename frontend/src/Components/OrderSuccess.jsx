@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { MdOutlineDownloadDone } from "react-icons/md";
 import deliveryBoy from "../Images/delivery-boy.gif";
 import { FaHandsPraying } from "react-icons/fa6";
 import { useSelector } from "react-redux";

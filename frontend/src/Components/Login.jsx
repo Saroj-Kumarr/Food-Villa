@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FaLock } from "react-icons/fa";
-import { MdEmail, MdMail } from "react-icons/md";
+import { MdMail } from "react-icons/md";
 import foodbg from "../Images/foodbg2.png";
 import { useNavigate } from "react-router";
 import {
@@ -13,7 +13,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import auth from "../firebase";
 import { useDispatch, useSelector } from "react-redux";
-import { setIsLogin, setLogin } from "../Utils/ItemSlice";
+import { setLogin } from "../Utils/ItemSlice";
 import { FcGoogle } from "react-icons/fc";
 import { SiGithub } from "react-icons/si";
 
@@ -38,7 +38,7 @@ const Signup = () => {
 
         sessionStorage.setItem("user", user.displayName);
 
-        sessionStorage.setItem('isLogin',"true");
+        sessionStorage.setItem("isLogin", "true");
 
         navigate("/body");
         toast.success("You are logged in with Google.", {
@@ -61,10 +61,9 @@ const Signup = () => {
         const token = credential.accessToken;
         const user = result.user;
 
-
         sessionStorage.setItem("user", user.displayName);
 
-        sessionStorage.setItem('isLogin',"true");
+        sessionStorage.setItem("isLogin", "true");
 
         toast.success("You are logged in with Github.", {
           position: "top-center",
@@ -113,7 +112,7 @@ const Signup = () => {
           dispatch(setLogin(true));
           navigate("/body");
           localStorage.setItem("userinfo", email);
-          sessionStorage.setItem('isLogin',"true");
+          sessionStorage.setItem("isLogin", "true");
         })
         .catch((error) => {
           const errorMessage = error.message;

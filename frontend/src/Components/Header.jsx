@@ -1,9 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import foodlogo from "../Images/logo.png";
-import { FiSearch } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { FaShoppingCart } from "react-icons/fa";
 import { setLogin, setTheme } from "../Utils/ItemSlice";
 import { ReactComponent as Sun } from "../Images/Sun.svg";
 import { ReactComponent as Moon } from "../Images/Moon.svg";
@@ -39,7 +37,6 @@ const Header = () => {
       });
   };
 
-
   return (
     <div
       className={`flex justify-between px-10 items-center border-b-2 bg-shadow ${
@@ -54,7 +51,6 @@ const Header = () => {
           }`}
         >
           Food <span className="text-[#B22126]">Villa</span>{" "}
-          {/* <p className="text-sm">Hii👋 <span className=" text-base">{name}</span></p> */}
         </h3>
       </div>
 
