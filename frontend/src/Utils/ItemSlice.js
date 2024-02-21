@@ -4,7 +4,7 @@ const itemSlice = createSlice({
   name: "item",
   initialState: {
     cartItems: [],
-    theme: true,
+    theme: false,
     login: true,
     isLogin: false,
   },

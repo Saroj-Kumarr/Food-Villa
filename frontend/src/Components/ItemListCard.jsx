@@ -38,18 +38,20 @@ const ItemListCard = ({ item }) => {
   return (
     <div
       key={item.card.info.id}
-      className={`p-2 mt-3 gap-2 bg-shadow duration-200 flex min-h-32 w-full ${
-        theme ? "bg-[#373737]" : "bg-white"
+      className={`p-2 my-2 border gap-2 hover:scale-[102%]  duration-300 flex min-h-32 w-full ${
+        theme
+          ? "bg-black bg-light-mode-shadow"
+          : "bg-white bg-light-mode-shadow "
       }`}
     >
       {item.card.info.imageId ? (
         <img
-          className="h-28 bg-shadow hover:scale-105 duration-200  "
+          className="h-28  hover:scale-105 duration-200  "
           src={IMG_CDN_URL + item.card.info.imageId}
         />
       ) : (
         <div
-          className={`h-28 bg-shadow  w-44 ${
+          className={`h-28 bg-light-mode-shadow  w-44 ${
             theme ? "bg-[#6c6969]" : "bg-[#E8E6E7]"
           }`}
         ></div>
@@ -79,13 +81,13 @@ const ItemListCard = ({ item }) => {
         <div className="flex text-white text-sm gap-2 mt-1">
           <button
             onClick={handleAddClick}
-            className="bg-green-600 hover:bg-green-700 duration-200  px-2 py-[1px] rounded-sm bg-shadow"
+            className="bg-green-600 hover:bg-green-700 duration-200  px-2 py-[1px] rounded-sm bg-light-mode-shadow"
           >
             Add <FaPlusSquare className="inline -mt-[2px]" />
           </button>
           <button
             onClick={handleDeleteClick}
-            className="bg-red-600 duration-200 px-2 py-[1px] rounded-sm bg-shadow hover:bg-red-700"
+            className="bg-red-600 duration-200 px-2 py-[1px] rounded-sm bg-light-mode-shadow hover:bg-red-700"
           >
             Delete <FaMinusSquare className="inline -mt-[1px]" />
           </button>

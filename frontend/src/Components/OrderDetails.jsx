@@ -16,11 +16,10 @@ const OrderDetails = () => {
     }
   }, []);
 
-  
   return (
     <div
       className={`flex min-h-[90vh] justify-center ${
-        theme ? "bg-[#373737]" : "bg-white"
+        theme ? "bg-black" : "bg-white"
       }`}
     >
       <div className=" text-white w-6/12">

@@ -12,12 +12,11 @@ const About = () => {
       navigate("/");
     }
   }, []);
-  
 
   return (
     <div
       className={`min-h-[81vh] flex justify-center items-center ${
-        theme ? "bg-[#373737]" : "bg-white"
+        theme ? "bg-black" : "bg-white"
       }`}
     >
       <div className="w-8/12 flex ">
@@ -60,7 +59,7 @@ const About = () => {
               web solutions. Eager to collaborate and contribute to meaningful
               projects.
             </p>
-            <button className="bg-[#B22126] px-3 py-[3px] text-white rounded-sm hover:bg-[#a31b1f] bg-shadow mt-1">
+            <button className="bg-[#B22126] px-3 py-[3px] text-white rounded-sm hover:bg-[#a31b1f] bg-light-mode-shadow mt-1">
               Download CV
             </button>
             <p

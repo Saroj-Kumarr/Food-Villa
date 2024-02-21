@@ -9,7 +9,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import auth from "../firebase";
 import { useDispatch, useSelector } from "react-redux";
-import { setLogin} from "../Utils/ItemSlice";
+import { setLogin } from "../Utils/ItemSlice";
 
 const Signup = () => {
   const [name, setName] = useState(null);
@@ -73,18 +73,17 @@ const Signup = () => {
     dispatch(setLogin(false));
   }, []);
 
-
   return (
     <div
       className={`flex justify-center items-center h-[81vh] ${
-        theme ? "bg-[#373737]" : "bg-white"
+        theme ? "bg-black" : "bg-white"
       }`}
     >
       <div className="flex items-center justify-center flex-col lg:flex-row">
         <img className="" src={foodbg} alt="" />
         <form
           onSubmit={(e) => e.preventDefault()}
-          className="flex flex-col text-center bg-shadow pl-5 p-7 mb-1 test rounded-sm lg:mt-12"
+          className="flex flex-col text-center bg-light-mode-shadow pl-5 p-7 mb-1 test rounded-sm lg:mt-12 border"
         >
           <h1
             className={`font-bold text-xl relative ${

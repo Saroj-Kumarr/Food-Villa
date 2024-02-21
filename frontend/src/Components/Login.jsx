@@ -135,14 +135,14 @@ const Signup = () => {
   return (
     <div
       className={`flex justify-center items-center h-[81vh] ${
-        theme ? "bg-[#373737]" : "bg-white"
+        theme ? "bg-black" : "bg-white"
       }`}
     >
       <div className="flex items-center justify-center flex-col lg:flex-row">
         <img className="" src={foodbg} alt="" />
         <form
           onSubmit={(e) => e.preventDefault()}
-          className="flex flex-col text-center bg-shadow pl-5 p-7 mb-1 test rounded-sm lg:mt-12"
+          className="flex flex-col text-center border bg-light-mode-shadow pl-5 p-7 mb-1 test rounded-sm lg:mt-12"
         >
           <h1
             className={`font-bold text-xl relative  ${
@@ -186,7 +186,7 @@ const Signup = () => {
           <div
             onClick={() => handleGoogleAuth()}
             className={`flex py-1 relative left-2 rounded-sm mt-2 items-center justify-center  ${
-              theme ? "bg-white text-[#373737]" : "bg-[#373737] text-white"
+              theme ? "bg-white text-[#373737]" : "bg-black text-white"
             }`}
           >
             <FcGoogle className="text-xl" />
@@ -196,7 +196,7 @@ const Signup = () => {
           <div
             onClick={() => handleGithubAuth()}
             className={`flex py-1 relative left-2 rounded-sm mt-2 items-center justify-center ${
-              theme ? "bg-white text-[#373737]" : "bg-[#373737] text-white"
+              theme ? "bg-white text-[#373737]" : "bg-black text-white"
             }`}
           >
             <SiGithub className="text-xl" />

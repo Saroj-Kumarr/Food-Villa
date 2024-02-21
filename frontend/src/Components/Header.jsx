@@ -39,15 +39,15 @@ const Header = () => {
 
   return (
     <div
-      className={`flex justify-between px-10 items-center border-b-2 bg-shadow ${
-        theme ? "bg-[#373737]" : "bg-white border-black"
+      className={`flex justify-between px-10 items-center border-b-2 bg-light-mode-shadow ${
+        theme ? "bg-black" : "bg-white border-black"
       }`}
     >
       <div className=" flex items-center gap-1">
         <img className="w-28" src={foodlogo} alt="" />
         <h3
           className={`text-2xl font-bold -ml-2 ${
-            theme ? "text-white" : "text-[#373737]"
+            theme ? "text-white" : "text-black"
           }`}
         >
           Food <span className="text-[#B22126]">Villa</span>{" "}
@@ -75,16 +75,14 @@ const Header = () => {
             </li>
             <li
               className={`px-2 py-[2px] rounded-sm ${
-                theme ? "bg-white text-[#373737]" : "bg-[#373737] text-white"
+                theme ? "bg-white text-black" : "bg-black text-white"
               }`}
             >
               <Link to="/cart">
                 Cart{" "}
                 <span
                   className={` px-1 rounded-full ${
-                    theme
-                      ? "bg-[#373737] text-white "
-                      : "bg-white text-[#373737]"
+                    theme ? "bg-black text-white " : "bg-white text-black"
                   }`}
                 >
                   {cartItems.length}
@@ -93,14 +91,14 @@ const Header = () => {
             </li>
             <li
               className={`px-2 py-[2px] rounded-sm ${
-                theme ? "bg-white text-[#373737]" : "bg-[#373737] text-white"
+                theme ? "bg-white text-black" : "bg-black text-white"
               }`}
             >
               <Link to="/contact">Contact</Link>
             </li>
             <li
               className={`px-2 py-[2px] rounded-sm ${
-                theme ? "bg-white text-[#373737]" : "bg-[#373737] text-white"
+                theme ? "bg-white text-black" : "bg-black text-white"
               }`}
             >
               <Link to="/about">About</Link>

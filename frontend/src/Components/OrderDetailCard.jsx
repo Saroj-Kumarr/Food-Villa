@@ -7,10 +7,10 @@ const OrderDetailCard = ({ item }) => {
   const theme = useSelector((store) => store.item.theme);
 
   return (
-    <div className="flex items-center justify-between pr-3 bg-shadow m-4 p-2 min-h-32">
+    <div className="flex items-center justify-between pr-3 bg-light-mode-shadow m-4 p-2 min-h-32">
       {item.card.info.imageId ? (
         <img
-          className="h-28 bg-shadow"
+          className="h-28 bg-light-mode-shadow"
           src={IMG_CDN_URL + item.card.info.imageId}
         />
       ) : (

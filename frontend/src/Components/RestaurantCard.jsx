@@ -19,17 +19,19 @@ const RestaurantCard = ({
   const theme = useSelector((store) => store.item.theme);
   return (
     <div
-      className={`w-[260px] min-h-[45vh] rounded-sm bg-shadow cursor-pointer duration-200 hover:scale-105  m-2 relative p-2 ${
-        theme ? "bg-[#373737] card-shadow" : "bg-white card-shadow-black"
+      className={`w-[260px] border min-h-[45vh] rounded-sm  cursor-pointer duration-200 hover:scale-105 bg-light-mode-shadow m-2 relative p-2 ${
+        theme ? "bg-black " : "bg-white "
       }`}
     >
-      <img
-        className="w-full h-40 rounded-sm text-center"
-        src={IMG_CDN_URL + cloudinaryImageId}
-      />
-      <h3 className="text-center font-bold text-base text-white bg-yellow-600">
-        {name}
-      </h3>
+      <div className="relative">
+        <img
+          className="w-full h-44 rounded-sm text-center brightness-75 hover:brightness-90 duration-200"
+          src={IMG_CDN_URL + cloudinaryImageId}
+        />
+        <h3 className="text-center absolute bottom-0 text-center text-white w-full font-bold text-base text-xl bg-gradient-to-t from-black to-transparent">
+          {name}
+        </h3>
+      </div>
       <h5 className="text-teal-500 text-center text-sm">
         {cuisines.join(", ")}
       </h5>
@@ -47,7 +49,7 @@ const RestaurantCard = ({
           {costForTwo ?? "₹200 for two"}
         </p>
       </span>
-      <div className="flex justify-center gap-3 items-center">
+      <div className="flex justify-center items-center">
         <p className="font-bold text-yellow-500">{header}</p>
         <p className="font-bold  text-yellow-500">{subHeader}</p>
       </div>
@@ -58,27 +60,39 @@ const RestaurantCard = ({
         </p>
       )}
 
-      <span className="text-white absolute bottom-0 w-[94%]">
+      <span className="text-black absolute bottom-0 w-[94%]">
         {veg ? (
-          <p className="bg-green-500 text-center mb-1 rounded-sm">veg</p>
+          <p
+            className={`bg-gradient-to-t font-bold from-green-500 to-transparent text-center mb-1 rounded-sm ${
+              !theme ? "text-black" : "text-white"
+            } `}
+          >
+            veg
+          </p>
         ) : (
-          <p className="bg-[#B22126] text-center mb-1 rounded-sm">nog-veg</p>
+          <p
+            className={`bg-gradient-to-t font-bold from-[#B22126] to-transparent text-center mb-1 rounded-sm ${
+              !theme ? "text-black" : "text-white"
+            } `}
+          >
+            non-veg
+          </p>
         )}
       </span>
 
-      <div className="flex absolute top-0 right-0 justify-center items-center mt-2">
+      <div className="flex absolute top-0 right-2 justify-center items-center mt-2">
         {avgRatingString > 4.5 ? (
-          <p className="bg-green-500 font-semibold text-center text-white px-1 py-[1px] rounded-sm text-sm ">
+          <p className="bg-green-500 font-semibold text-center text-white px-1 py-[2px] rounded-sm text-sm ">
             {avgRatingString}
             <IoMdStar className="inline -mt-[4px] text-base" />
           </p>
         ) : avgRatingString > 4 ? (
-          <p className="bg-yellow-500 font-semibold text-center text-white px-1 py-[1px] rounded-sm text-sm">
+          <p className="bg-yellow-500 font-semibold text-center text-white px-1 py-[2px] rounded-sm text-sm">
             {avgRatingString}
             <IoMdStar className="inline -mt-[5px] -ml-[2px]" />
           </p>
         ) : (
-          <p className="bg-red-500 font-semibold text-center text-white px-1 py-[1px] rounded-sm text-sm">
+          <p className="bg-red-500 font-semibold text-center text-white px-1 py-[2px] rounded-sm text-sm">
             {avgRatingString}
             <IoMdStar className="inline -mt-[5px] -ml-[2px]" />
           </p>

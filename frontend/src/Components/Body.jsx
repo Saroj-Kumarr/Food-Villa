@@ -87,7 +87,13 @@ const Body = () => {
   if (!allRestaurants) return <Shimmer />;
 
   return (
-    <div className={`min-h-screen  ${theme ? "bg-[#373737]" : "bg-[#373737]"}`}>
+    <div
+      className={`min-h-screen  ${
+        theme
+          ? "bg-black bg-light-mode-shadow"
+          : "bg-white bg-light-mode-shadow"
+      }`}
+    >
       <div className="flex items-center justify-center absolute w-full z-10 top-4 -left-20">
         <input
           type="text"
@@ -118,7 +124,7 @@ const Body = () => {
         </div>
         <label
           className={`mr-2 ml-10 text-xl ${
-            theme ? "text-white" : "text-[#373737]"
+            theme ? "text-white" : "text-black"
           }`}
         >
           Filter <span className="text-[#B22126]">by :</span>{" "}
@@ -133,7 +139,7 @@ const Body = () => {
       {errorMessage && (
         <div
           className={`flex-col flex justify-center items-center h-[90vh] ${
-            theme ? "bg-[#373737] text-white" : "bg-white text-[#373737]"
+            theme ? "bg-black text-white" : "bg-white text-black"
           }`}
         >
           <div className="shadow-md">
@@ -152,7 +158,7 @@ const Body = () => {
       ) : (
         <div
           className={`flex flex-wrap gap-2 items-center justify-center pb-12 pt-4 ${
-            theme ? "bg-[#373737]" : "bg-white"
+            theme ? "bg-black" : "bg-white"
           }`}
         >
           {(filteredRestaurants === null ? FilterRes : filteredRestaurants).map(

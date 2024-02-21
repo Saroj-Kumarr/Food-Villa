@@ -56,20 +56,24 @@ const Contact = () => {
   return (
     <div
       className={`h-[81vh] flex justify-center ${
-        theme ? "bg-[#373737]" : "bg-white"
+        theme ? "bg-black" : "bg-white"
       }`}
     >
       <div className="w-7/12 mt-20 ml-20">
         <h1 className="font-bold text-3xl text-center">Contact me</h1>
         <div className="flex items-center mt-2">
-          <p className="w-5/12 bg-[#373737] h-[3px]"></p>
+          <p className={`w-5/12  h-[3px] ${!theme?"bg-black":"bg-white"}`}></p>
           <p className="w-2/12 text-xl text-center font-bold text-[#B22126]">
             Get in touch
           </p>
-          <p className="w-5/12 bg-[#373737] h-[3px]"></p>
+          <p className={`w-5/12  h-[3px] ${!theme?"bg-black":"bg-white"}`}></p>
         </div>
         <div className="flex justify-center items-center mt-2 p-4 ">
-          <form className=" bg-shadow p-2" ref={form} onSubmit={sendEmail}>
+          <form
+            className=" bg-light-mode-shadow border p-2"
+            ref={form}
+            onSubmit={sendEmail}
+          >
             <h3
               className={` font-bold text-xl text-center mt-2 ${
                 theme ? "text-white" : "text-[#373737]"
@@ -101,7 +105,7 @@ const Contact = () => {
                 ></textarea>
 
                 <input
-                  className="bg-[#B22126] px-2 py-1 w-10/12 mt-2 rounded-sm text-white font-bold bg-shadow hover:bg-[#921317] duration-200 mt-2"
+                  className="bg-[#B22126] px-2 py-1 w-10/12 mt-2 rounded-sm text-white font-bold bg-light-mode-shadow hover:bg-[#921317] duration-200 mt-2"
                   type="submit"
                   value="Send"
                 />

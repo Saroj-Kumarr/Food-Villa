@@ -8,7 +8,7 @@ const Shimmer = () => {
       {[...Array(20)].map((_, index) => (
         <div
           key={index}
-          className="shimmer-cards m-2 bg-shadow rounded-sm"
+          className="shimmer-cards m-2 box-shadow rounded-sm"
         >
           <ShimmerThumbnail height={200} width={250}  />
           <ShimmerTitle

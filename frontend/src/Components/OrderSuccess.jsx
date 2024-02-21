@@ -21,7 +21,7 @@ const OrderSuccess = () => {
   return (
     <div
       className={`flex justify-center items-center h-[90vh] ${
-        theme ? "bg-[#373737]" : "bg-white"
+        theme ? "bg-black" : "bg-white"
       }`}
     >
       <div
@@ -40,8 +40,8 @@ const OrderSuccess = () => {
           <FaHandsPraying className="inline -mt-1 ml-[2px] text-[#F7C19B]" />
         </p>
         <p className="text-xl font-bold mt-2">
-          <FaQuoteLeft className="inline -mt-4"/> Nothing brings People together like good food!{" "}
-          <FaQuoteRight className="inline mt-2" />
+          <FaQuoteLeft className="inline -mt-4" /> Nothing brings People
+          together like good food! <FaQuoteRight className="inline mt-2" />
         </p>
         <p className=" text-xs text-center mt-4">
           Our mission is to connect people around good food. We feed employee’s

@@ -1,4 +1,4 @@
-import {  useNavigate, useParams} from "react-router";
+import { useNavigate, useParams } from "react-router";
 import useRestaurantMenu from "../Hooks/useResMenuData";
 import RestaurantCategories from "./RestaurantCategories";
 import { IMG_CDN_URL } from "../constants";
@@ -23,11 +23,13 @@ const RestaurantMenu = () => {
 
   if (!resInfo) return <RestaurantMenuShimmer />;
 
+  console.log(resInfo);
+
   const { name, cuisines, costForTwoMessage, avgRating, cloudinaryImageId } =
-    resInfo.cards[0].card.card.info;
+    resInfo.cards[2].card.card.info;
 
   const categories =
-    resInfo.cards[2].groupedCard.cardGroupMap.REGULAR.cards.filter((c) => {
+    resInfo.cards[4].groupedCard.cardGroupMap.REGULAR.cards.filter((c) => {
       return (
         c.card?.["card"]?.["@type"] ===
         "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
@@ -35,7 +37,7 @@ const RestaurantMenu = () => {
     });
 
   return (
-    <div className={` ${theme ? "bg-[#373737]" : "bg-white"}`}>
+    <div className={` ${theme ? "bg-black" : "bg-white"}`}>
       <div className="flex flex-col min-h-screen">
         <div
           className={`flex  justify-center items-center text-white ${

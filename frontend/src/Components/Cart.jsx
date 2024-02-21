@@ -129,7 +129,7 @@ const Cart = () => {
   return (
     <div
       className={`flex items-center justify-center flex-col ${
-        theme ? "bg-[#373737]" : "bg-white"
+        theme ? "bg-black" : "bg-white"
       } `}
     >
       <div
@@ -150,7 +150,7 @@ const Cart = () => {
           </h3>
           <button
             onClick={handleClear}
-            className="bg-red-600 duration-200 px-2 py-[1px] rounded-sm bg-shadow hover:bg-red-700 text-white"
+            className="bg-red-600 duration-200 px-2 py-[1px] rounded-sm bg-light-mode-shadow hover:bg-red-700 text-white"
           >
             clear cart <MdDeleteForever className="inline -mt-[1px]" />
           </button>
@@ -163,7 +163,7 @@ const Cart = () => {
           })}
         </div>
         {cartItems.length != 0 && (
-          <div className="w-[21rem] border-2 p-2 h-[65vh] bg-shadow fixed right-24 top-44 rounded-sm">
+          <div className="w-[21rem]  p-2 h-[65vh] bg-light-mode-shadow fixed right-24 top-44 rounded-sm border">
             <h3
               className={`text-center text-lg font-bold pb-2 ${
                 theme
@@ -267,7 +267,7 @@ const Cart = () => {
               <div className="flex items-center justify-center">
                 <button
                   onClick={(e) => paymentHandler(e)}
-                  className="bg-green-500 py-2 w-10/12 mt-2 text-white rounded-sm bg-shadow hover:bg-green-600 duration-200"
+                  className="bg-green-500 py-2 w-10/12 mt-2 text-white rounded-sm bg-light-mode-shadow hover:bg-green-600 duration-200"
                 >
                   Proceed to payment
                 </button>

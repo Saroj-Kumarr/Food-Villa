@@ -13,8 +13,8 @@ const Footer = () => {
 
   return (
     <div
-      className={`flex items-center justify-center gap-1 text-[#373737] h-16 text-base font-semibold border-t-2 bg-shadow ${
-        theme ? "bg-[#373737]" : "bg-white border-black"
+      className={`flex items-center justify-center gap-1 text-[#373737] h-16 text-base font-semibold border-t-2 bg-light-mode-shadow ${
+        theme ? "bg-black" : "bg-white border-black"
       }`}
     >
       <div
