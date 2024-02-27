@@ -40,7 +40,7 @@ const Header = () => {
   return (
     <div
       className={`flex justify-between px-10 items-center border-b-2 bg-light-mode-shadow ${
-        theme ? "bg-black" : "bg-white border-black"
+        theme ? "bg-[#180022]" : "bg-white border-black"
       }`}
     >
       <div className=" flex items-center gap-1">

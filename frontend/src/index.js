@@ -19,8 +19,10 @@ import Login from "./Components/Login";
 import OrderDetails from "./Components/OrderDetails";
 
 const AppLayout = () => {
+
   return (
     <React.Fragment>
+
       <Provider store={store}>
         <Header />
         <Outlet />
