@@ -14,7 +14,7 @@ const Footer = () => {
   return (
     <div
       className={`flex items-center justify-center gap-1 text-[#373737] h-16 text-base font-semibold border-t-2 bg-light-mode-shadow ${
-        theme ? "bg-[#180022]" : "bg-white border-black"
+        theme ? "bg-[#0F1518]" : "bg-white border-black"
       }`}
     >
       <div

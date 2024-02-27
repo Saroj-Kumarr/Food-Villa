@@ -83,7 +83,9 @@ const Signup = () => {
         <img className="" src={foodbg} alt="" />
         <form
           onSubmit={(e) => e.preventDefault()}
-          className="flex flex-col text-center bg-light-mode-shadow pl-5 p-7 mb-1 test rounded-sm lg:mt-12 border"
+          className={`flex flex-col text-center bg-light-mode-shadow pl-5 p-7 mb-1 test rounded-sm lg:mt-12 ${
+            !theme ? "bg-light-mode-shadow" : "bg-dark-mode"
+          }`}
         >
           <h1
             className={`font-bold text-xl relative ${

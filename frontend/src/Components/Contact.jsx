@@ -62,15 +62,21 @@ const Contact = () => {
       <div className="w-7/12 mt-20 ml-20">
         <h1 className="font-bold text-3xl text-center">Contact me</h1>
         <div className="flex items-center mt-2">
-          <p className={`w-5/12  h-[3px] ${!theme?"bg-black":"bg-white"}`}></p>
+          <p
+            className={`w-5/12  h-[3px] ${!theme ? "bg-black" : "bg-white"}`}
+          ></p>
           <p className="w-2/12 text-xl text-center font-bold text-[#B22126]">
             Get in touch
           </p>
-          <p className={`w-5/12  h-[3px] ${!theme?"bg-black":"bg-white"}`}></p>
+          <p
+            className={`w-5/12  h-[3px] ${!theme ? "bg-black" : "bg-white"}`}
+          ></p>
         </div>
         <div className="flex justify-center items-center mt-2 p-4 ">
           <form
-            className=" bg-light-mode-shadow border p-2"
+            className={` p-2 ${
+              !theme ? "bg-light-mode-shadow" : "bg-dark-mode"
+            }`}
             ref={form}
             onSubmit={sendEmail}
           >

@@ -163,7 +163,11 @@ const Cart = () => {
           })}
         </div>
         {cartItems.length != 0 && (
-          <div className="w-[21rem]  p-2 h-[65vh] bg-light-mode-shadow fixed right-24 top-44 rounded-sm border">
+          <div
+            className={`w-[21rem]  p-2 h-[65vh]  fixed right-24 top-44 rounded-sm ${
+              theme ? "bg-dark-mode" : " bg-light-mode-shadow"
+            }`}
+          >
             <h3
               className={`text-center text-lg font-bold pb-2 ${
                 theme

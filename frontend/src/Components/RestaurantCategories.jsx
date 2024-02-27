@@ -18,10 +18,10 @@ const RestaurantCategories = ({ data }) => {
   return (
     <div className="w-7/12 flex flex-col mx-auto" onClick={() => handleClick()}>
       <div
-        className={` mx-auto bg-light-mode-shadow border my-2 w-full  p-4 flex justify-between ${
+        className={` mx-auto  my-2 w-full  p-4 flex justify-between ${
           theme
-            ? "bg-black"
-            : "bg-white"
+            ? "bg-black bg-dark-mode"
+            : "bg-white bg-light-mode-shadow"
         }`}
       >
         <span

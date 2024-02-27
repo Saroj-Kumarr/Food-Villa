@@ -38,9 +38,9 @@ const ItemListCard = ({ item }) => {
   return (
     <div
       key={item.card.info.id}
-      className={`p-2 my-2 border gap-2 hover:scale-[102%]  duration-300 flex min-h-32 w-full ${
+      className={`p-2 my-2 gap-2 hover:scale-[102%]  duration-300 flex min-h-32 w-full ${
         theme
-          ? "bg-black bg-light-mode-shadow"
+          ? "bg-black bg-dark-mode"
           : "bg-white bg-light-mode-shadow "
       }`}
     >

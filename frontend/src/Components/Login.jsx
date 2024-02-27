@@ -142,11 +142,13 @@ const Signup = () => {
         <img className="" src={foodbg} alt="" />
         <form
           onSubmit={(e) => e.preventDefault()}
-          className="flex flex-col text-center border bg-light-mode-shadow pl-5 p-7 mb-1 test rounded-sm lg:mt-12"
+          className={`flex flex-col text-center bg-light-mode-shadow pl-5 p-7 mb-1 test rounded-sm lg:mt-12 ${
+            !theme ? "bg-light-mode-shadow" : "bg-dark-mode"
+          }`}
         >
           <h1
             className={`font-bold text-xl relative  ${
-              theme ? "text-white" : "text-[#373737]"
+              theme ? " text-white" : "text-[#373737]"
             }`}
           >
             Login
@@ -185,8 +187,8 @@ const Signup = () => {
 
           <div
             onClick={() => handleGoogleAuth()}
-            className={`flex py-1 relative left-2 rounded-sm mt-2 items-center justify-center  ${
-              theme ? "bg-white text-[#373737]" : "bg-black text-white"
+            className={`flex py-1 border relative left-2 rounded-sm mt-2 items-center justify-center  ${
+              !theme ? "bg-gray-100 text-[#373737]" : "bg-black text-white"
             }`}
           >
             <FcGoogle className="text-xl" />
@@ -195,8 +197,8 @@ const Signup = () => {
 
           <div
             onClick={() => handleGithubAuth()}
-            className={`flex py-1 relative left-2 rounded-sm mt-2 items-center justify-center ${
-              theme ? "bg-white text-[#373737]" : "bg-black text-white"
+            className={`flex py-1 border relative left-2 rounded-sm mt-2 items-center justify-center  ${
+              !theme ? "bg-gray-100 text-[#373737]" : "bg-black text-white"
             }`}
           >
             <SiGithub className="text-xl" />

@@ -28,7 +28,6 @@ const Body = () => {
     { value: "undefined", label: "Only non-veg" },
     { value: "3.0 km", label: "Under 3.0 km" },
     { value: "₹200 for two", label: "₹200 for two" },
-    { value: "FLAT DEAL", label: "FLAT DEAL" },
     { value: "reset", label: "Reset Filter" },
   ];
 

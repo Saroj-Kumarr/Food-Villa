@@ -2,6 +2,8 @@ import { IMG_CDN_URL } from "../constants";
 import { IoMdStar } from "react-icons/io";
 import { LiaDotCircle } from "react-icons/lia";
 import { useSelector } from "react-redux";
+import vegLogo from "../Images/veg.png";
+import nonVegLogo from "../Images/non-veg.png";
 
 const RestaurantCard = ({
   cloudinaryImageId,
@@ -19,8 +21,8 @@ const RestaurantCard = ({
   const theme = useSelector((store) => store.item.theme);
   return (
     <div
-      className={`w-[260px] border min-h-[45vh] rounded-sm  cursor-pointer duration-200 hover:scale-105 bg-light-mode-shadow m-2 relative p-2 ${
-        theme ? "bg-black " : "bg-white "
+      className={`w-[260px]  min-h-[45vh] rounded-sm  cursor-pointer duration-200 hover:scale-105  m-2 relative p-2 ${
+        theme ? "bg-black bg-dark-mode" : "bg-white bg-light-mode-shadow"
       }`}
     >
       <div className="relative">
@@ -60,23 +62,26 @@ const RestaurantCard = ({
         </p>
       )}
 
-      <span className="text-black absolute bottom-0 w-[94%]">
+      <span className="text-black absolute bottom-2 w-full">
         {veg ? (
-          <p
-            className={`bg-gradient-to-t font-bold from-green-500 to-transparent text-center mb-1 rounded-sm ${
-              !theme ? "text-black" : "text-white"
-            } `}
-          >
-            veg
-          </p>
+          <div className="flex items-center justify-center gap-1">
+            <div className="w-2 h-2 rounded-full bg-green-500"></div>
+            <div className="w-3 h-3 rounded-full bg-green-500"></div>
+            <div className="w-2 h-2 rounded-full bg-green-500"></div>
+          </div>
         ) : (
-          <p
-            className={`bg-gradient-to-t font-bold from-[#B22126] to-transparent text-center mb-1 rounded-sm ${
-              !theme ? "text-black" : "text-white"
-            } `}
-          >
-            non-veg
-          </p>
+          // <p
+          //   className={`bg-gradient-to-t font-bold from-green-500 to-transparent text-center mb-1 rounded-sm ${
+          //     !theme ? "text-black" : "text-white"
+          //   } `}
+          // >
+          //   veg
+          // </p>
+          <div className="flex items-center justify-center gap-1">
+            <div className="w-2 h-2 rounded-full bg-red-600"></div>
+            <div className="w-3 h-3 rounded-full bg-red-600"></div>
+            <div className="w-2 h-2 rounded-full bg-red-600"></div>
+          </div>
         )}
       </span>
 
