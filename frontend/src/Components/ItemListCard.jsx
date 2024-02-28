@@ -46,7 +46,7 @@ const ItemListCard = ({ item }) => {
     >
       {item.card.info.imageId ? (
         <img
-          className="h-28  hover:scale-105 duration-200  "
+          className="h-28 shimmer-shadow  hover:scale-105 duration-200  "
           src={IMG_CDN_URL + item.card.info.imageId}
         />
       ) : (

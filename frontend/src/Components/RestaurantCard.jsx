@@ -72,13 +72,6 @@ const RestaurantCard = ({
             <div className="w-1 h-1 rounded-full bg-green-600"></div>
           </div>
         ) : (
-          // <p
-          //   className={`bg-gradient-to-t font-bold from-green-500 to-transparent text-center mb-1 rounded-sm ${
-          //     !theme ? "text-black" : "text-white"
-          //   } `}
-          // >
-          //   veg
-          // </p>
           <div className="flex items-center justify-center gap-1">
             <div className="w-1 h-1 rounded-full bg-red-600"></div>
             <div className="w-2 h-2 rounded-full bg-red-600"></div>

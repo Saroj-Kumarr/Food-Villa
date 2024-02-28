@@ -34,6 +34,8 @@ const Signup = () => {
         const token = credential.accessToken;
         const user = result.user;
 
+        sessionStorage.setItem("gmailInfo", user.email);
+
         dispatch(setLogin(true));
 
         sessionStorage.setItem("user", user.displayName);
@@ -103,6 +105,8 @@ const Signup = () => {
     if (emailCheck == true && passwordCheck == true) {
       signInWithEmailAndPassword(auth, email, password)
         .then((result) => {
+          sessionStorage.setItem("gmailInfo", email);
+
           toast.success("You are logged in.", {
             position: "top-center",
             theme: "dark",

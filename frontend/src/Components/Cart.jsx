@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { FaRupeeSign } from "react-icons/fa";
 import { IoCartSharp } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,6 +11,7 @@ import { FaStripe } from "react-icons/fa";
 import { SiPaytm } from "react-icons/si";
 import { FaGooglePay } from "react-icons/fa";
 import { toast } from "react-toastify";
+import emailjs from "@emailjs/browser";
 import "react-toastify/dist/ReactToastify.css";
 
 const Cart = () => {
@@ -20,9 +21,19 @@ const Cart = () => {
   const [totalPrice, setTotalPrice] = useState(totalValue);
 
   const cartItems = useSelector((store) => store.item.cartItems);
-  
+
+  const orderedItems = cartItems.map((obj) => obj.card.info.name).join(",");
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const form = useRef();
+
+  const sendEmail = (formValue) => {
+    emailjs.sendForm("service_auza992", "template_dt47sy9", formValue.current, {
+      publicKey: "HlO30OjjrKjLIDBVr",
+    });
+  };
 
   const paymentMessage = () => {
     toast.info("Click on Proceed to payment", {
@@ -97,6 +108,13 @@ const Cart = () => {
           }
         );
         const jsonRes = await validateRes.json();
+
+        toast.success("You order has been placed successfully !", {
+          position: "top-center",
+          theme: "dark",
+        });
+
+        sendEmail(form);
 
         navigate("/cart/ordersuccess");
       },
@@ -310,6 +328,18 @@ const Cart = () => {
             </div>
           </div>
         )}
+
+        <form className="hidden" ref={form}>
+          <input type="text" name="user_name" value="test" />
+          <input type="email" name="user_email" value="test@gmail.com" />
+          <textarea
+            rows="5"
+            name="message"
+            value={`${orderedItems} are ordered.
+            ${totalPrice + deliveryCharge - discount} paid.`}
+            placeholder="Type your message here..."
+          ></textarea>
+        </form>
       </div>
     </div>
   );

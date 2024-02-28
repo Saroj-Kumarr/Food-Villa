@@ -14,7 +14,6 @@ const useResData = (API_URL) => {
 
       if (!response.ok) {
         const err = response.status;
-        console.log(err);
       } else {
         const json = await response.json();
         async function checkJsonData(jsonData) {

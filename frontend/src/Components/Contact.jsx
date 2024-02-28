@@ -22,7 +22,7 @@ const Contact = () => {
     e.preventDefault();
 
     emailjs
-      .sendForm("service_2ox8k2s", "template_vy40bvr", form.current, {
+      .sendForm("service_auza992", "template_dt47sy9", form.current, {
         publicKey: "HlO30OjjrKjLIDBVr",
       })
       .then(
