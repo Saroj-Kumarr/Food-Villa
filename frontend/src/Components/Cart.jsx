@@ -18,7 +18,9 @@ const Cart = () => {
   const [avail, setAvail] = useState(false);
   const [totalValue, discount, deliveryCharge] = useGetValue();
   const [totalPrice, setTotalPrice] = useState(totalValue);
+
   const cartItems = useSelector((store) => store.item.cartItems);
+  
   const dispatch = useDispatch();
   const navigate = useNavigate();
 

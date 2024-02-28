@@ -19,6 +19,7 @@ const Body = () => {
   const [selectedOption, setSelectedOption] = useState([]);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  
   const theme = useSelector((store) => store.item.theme);
 
   const options = [
@@ -88,10 +89,8 @@ const Body = () => {
   return (
     <div
       className={`min-h-screen  ${
-        theme
-          ? "bg-black bg-light-mode-shadow"
-          : "bg-white bg-light-mode-shadow"
-      }`}
+        theme ? "bg-black bg-light-mode-shadow"
+          : "bg-white bg-light-mode-shadow"}`}
     >
       <div className="flex items-center justify-center absolute w-full z-10 top-4 -left-20">
         <input
@@ -104,6 +103,7 @@ const Body = () => {
           value={searchText}
           onChange={(e) => {
             setSearchText(e.target.value);
+            searchData(searchText, allRestaurants);
           }}
           onKeyDown={(e) => {
             if (e.key == "Enter") {

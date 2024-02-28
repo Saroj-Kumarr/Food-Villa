@@ -65,9 +65,11 @@ const RestaurantCard = ({
       <span className="text-black absolute bottom-2 w-full">
         {veg ? (
           <div className="flex items-center justify-center gap-1">
-            <div className="w-2 h-2 rounded-full bg-green-500"></div>
-            <div className="w-3 h-3 rounded-full bg-green-500"></div>
-            <div className="w-2 h-2 rounded-full bg-green-500"></div>
+            <div className="w-1 h-1 rounded-full bg-green-600"></div>
+            <div className="w-2 h-2 rounded-full bg-green-600"></div>
+            <div className="w-3 h-3 rounded-full bg-green-600"></div>
+            <div className="w-2 h-2 rounded-full bg-green-600"></div>
+            <div className="w-1 h-1 rounded-full bg-green-600"></div>
           </div>
         ) : (
           // <p
@@ -78,9 +80,11 @@ const RestaurantCard = ({
           //   veg
           // </p>
           <div className="flex items-center justify-center gap-1">
+            <div className="w-1 h-1 rounded-full bg-red-600"></div>
             <div className="w-2 h-2 rounded-full bg-red-600"></div>
             <div className="w-3 h-3 rounded-full bg-red-600"></div>
             <div className="w-2 h-2 rounded-full bg-red-600"></div>
+            <div className="w-1 h-1 rounded-full bg-red-600"></div>
           </div>
         )}
       </span>

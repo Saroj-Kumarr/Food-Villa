@@ -8,22 +8,20 @@ const useResData = (API_URL) => {
     getRestaurants();
   }, []);
 
-  
   async function getRestaurants() {
-    
     try {
       const response = await fetch(API_URL);
-     
+
       if (!response.ok) {
         const err = response.status;
-        throw new Error(err);
+        console.log(err);
       } else {
         const json = await response.json();
         async function checkJsonData(jsonData) {
           for (let i = 0; i < jsonData?.data?.cards.length; i++) {
-
-           
-            let checkData = json?.data?.cards[i]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+            let checkData =
+              json?.data?.cards[i]?.card?.card?.gridElements?.infoWithStyle
+                ?.restaurants;
 
             if (checkData !== undefined) {
               return checkData;
@@ -31,10 +29,8 @@ const useResData = (API_URL) => {
           }
         }
 
-        
         const resData = await checkJsonData(json);
 
-    
         setAllRestaurants(resData);
         setFilteredRestaurants(resData);
       }
@@ -42,7 +38,7 @@ const useResData = (API_URL) => {
       console.error(error);
     }
   }
-  return [allRestaurants, filteredRestaurants]; 
+  return [allRestaurants, filteredRestaurants];
 };
 
 export default useResData;
