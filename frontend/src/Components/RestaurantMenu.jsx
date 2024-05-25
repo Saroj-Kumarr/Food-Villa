@@ -35,12 +35,12 @@ const RestaurantMenu = () => {
     sla,
     avgRating,
     cloudinaryImageId,
-  } = resInfo.cards[0].card.card.info;
+  } = resInfo.cards[2].card.card.info;
 
   const { header, shortDescriptionList } = aggregatedDiscountInfo || {};
 
   const categories =
-    resInfo.cards[2].groupedCard.cardGroupMap.REGULAR.cards.filter((c) => {
+    resInfo.cards[4].groupedCard.cardGroupMap.REGULAR.cards.filter((c) => {
       return (
         c.card?.["card"]?.["@type"] ===
         "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
@@ -58,7 +58,7 @@ const RestaurantMenu = () => {
           <div className="flex gap-1 items-center ">
             <div className="relative">
               <img
-                className="h-48 rounded-sm brightness-75"
+                className="h-48 w-80 rounded-sm object-cover brightness-75"
                 src={IMG_CDN_URL + cloudinaryImageId}
                 alt={name}
               />

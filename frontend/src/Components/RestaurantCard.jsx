@@ -18,6 +18,8 @@ const RestaurantCard = ({
 }) => {
   const { header, discountTag, subHeader } = aggregatedDiscountInfoV3 || {};
 
+  console.log(cloudinaryImageId);
+
   const theme = useSelector((store) => store.item.theme);
   return (
     <div

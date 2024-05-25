@@ -80,14 +80,14 @@ const About = () => {
                 My <span className="text-[#B22126]">Github </span>Activity Graph
               </p>
               <GitHubCalendar
-                blockSize={8}
+                blockSize={10}
                 username="nkashyap01"
                 colorScheme={`${theme ? "dark" : "light"}`}
               />
             </div>
           </div>
         </div>
-        <div className="w-5/12">
+        <div className="w-5/12 ml-5">
           <img src={boy} alt="" />
         </div>
       </div>
