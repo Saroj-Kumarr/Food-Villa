@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import deliveryBoy from "../assets/delivery-boy.gif";
+import deliveryBoy from "../../assets/delivery-boy.gif";
 import { FaHandsPraying } from "react-icons/fa6";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";

@@ -1,5 +1,5 @@
 import React from "react";
-import { IMG_CDN_URL } from "../constants";
+import { IMG_CDN_URL } from "../../config/constants";
 import { FaRupeeSign } from "react-icons/fa";
 import { FaPlusSquare } from "react-icons/fa";
 import { FaMinusSquare } from "react-icons/fa";

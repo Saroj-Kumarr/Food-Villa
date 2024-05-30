@@ -21,7 +21,7 @@ import hero1 from "./hero-img.png";
 import hero2 from "./hero-img2.png";
 import hero3 from "./hero-img3.png";
 
-export const assets = {
+const assets = {
   appstore,
   arrowdown,
   back1,
@@ -45,3 +45,5 @@ export const assets = {
   hero2,
   hero3,
 };
+
+export default assets;

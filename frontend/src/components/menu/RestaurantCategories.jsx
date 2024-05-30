@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ItemList from "./ItemList";
+import ItemList from "../cart/ItemList";
 import { BiSolidDownArrow } from "react-icons/bi";
 import { BiSolidUpArrow } from "react-icons/bi";
 import { useSelector } from "react-redux";

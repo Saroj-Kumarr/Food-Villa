@@ -11,12 +11,13 @@ import { ToastContainer } from "react-toastify";
 import Cart from "./components/cart/Cart";
 import { Provider } from "react-redux";
 import store from "./redux/store";
-import Contact from "./components/home/Contact";
-import About from "./components/home/About";
+import Contact from "./components/common/Contact";
+import About from "./components/common/About";
 import OrderSuccess from "./components/order/OrderSuccess";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import OrderDetails from "./components/order/OrderDetails";
+import LandingPage from "./components/home/LandingPage";
 
 const AppLayout = () => {
   return (
@@ -39,11 +40,15 @@ const appRouter = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Register />,
+        element: <LandingPage />,
       },
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
       },
       {
         path: "/body",

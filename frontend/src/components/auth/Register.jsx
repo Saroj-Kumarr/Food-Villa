@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { FaCircleUser } from "react-icons/fa6";
-import { FaLock } from "react-icons/fa";
+import { FaLock } from
+  "react-icons/fa";
 import { MdMail } from "react-icons/md";
-import foodbg from "../assets/foodbg2.png";
+import foodbg from "../../assets/foodbg2.png";
 import { useNavigate } from "react-router";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import auth from "../firebase";
+import auth from "../../config/firebase";
 import { useDispatch, useSelector } from "react-redux";
-import { setLogin } from "../../utils/ItemSlice";
+import { setLogin } from "../../redux/itemSlice/ItemSlice";
 
 const Signup = () => {
   const [name, setName] = useState(null);

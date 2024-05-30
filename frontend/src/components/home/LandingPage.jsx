@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
-import "../styles/Home.scss";
-import { assets } from "../assets/assets";
+import "./home.css";
+import assets from "../../assets/assets";
 import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";

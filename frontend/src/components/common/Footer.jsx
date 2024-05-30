@@ -1,7 +1,7 @@
 import React from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Github_URL } from "../constants";
+import { Github_URL } from "../../config/constants";
 import { IoIosHeart } from "react-icons/io";
 import { FaGithubSquare } from "react-icons/fa";
 import { FaInstagramSquare } from "react-icons/fa";

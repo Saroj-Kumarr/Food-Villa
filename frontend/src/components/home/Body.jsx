@@ -1,14 +1,14 @@
 import RestaurantCard from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
-import { swiggy_api_URL } from "../constants";
+import { swiggy_api_URL } from "../../config/constants";
 import { Link, useNavigate } from "react-router-dom";
 import { filterData } from "../../utils/helper";
 import useResData from "../../hooks/useResData";
 import { FiSearch } from "react-icons/fi";
 import Select from "react-select";
 import { useDispatch, useSelector } from "react-redux";
-import restaurantImage from "../assets/restaurant.jpg";
+import restaurantImage from "../../assets/restaurant.jpg";
 import { FaHandsPraying } from "react-icons/fa6";
 
 const Body = () => {

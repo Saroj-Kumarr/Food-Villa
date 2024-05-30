@@ -1,9 +1,7 @@
-import { IMG_CDN_URL } from "../constants";
+import { IMG_CDN_URL } from "../../config/constants";
 import { IoMdStar } from "react-icons/io";
 import { LiaDotCircle } from "react-icons/lia";
 import { useSelector } from "react-redux";
-import vegLogo from "../assets/veg.png";
-import nonVegLogo from "../assets/non-veg.png";
 
 const RestaurantCard = ({
   cloudinaryImageId,
@@ -17,8 +15,6 @@ const RestaurantCard = ({
   aggregatedDiscountInfoV3,
 }) => {
   const { header, discountTag, subHeader } = aggregatedDiscountInfoV3 || {};
-
-  console.log(cloudinaryImageId);
 
   const theme = useSelector((store) => store.item.theme);
   return (
@@ -67,19 +63,29 @@ const RestaurantCard = ({
       <span className="text-black absolute bottom-2 w-full">
         {veg ? (
           <div className="flex items-center justify-center gap-1">
-            <div className="w-1 h-1 rounded-full bg-green-600"></div>
-            <div className="w-2 h-2 rounded-full bg-green-600"></div>
-            <div className="w-3 h-3 rounded-full bg-green-600"></div>
-            <div className="w-2 h-2 rounded-full bg-green-600"></div>
-            <div className="w-1 h-1 rounded-full bg-green-600"></div>
+            {Array(5)
+              .fill(null)
+              .map((_, index) => {
+                return (
+                  <div
+                    key={index}
+                    className="w-1 h-1 rounded-full bg-green-600"
+                  ></div>
+                );
+              })}
           </div>
         ) : (
           <div className="flex items-center justify-center gap-1">
-            <div className="w-1 h-1 rounded-full bg-red-600"></div>
-            <div className="w-2 h-2 rounded-full bg-red-600"></div>
-            <div className="w-3 h-3 rounded-full bg-red-600"></div>
-            <div className="w-2 h-2 rounded-full bg-red-600"></div>
-            <div className="w-1 h-1 rounded-full bg-red-600"></div>
+            {Array(5)
+              .fill(null)
+              .map((_, index) => {
+                return (
+                  <div
+                    key={index}
+                    className="w-1 h-1 rounded-full bg-red-600"
+                  ></div>
+                );
+              })}
           </div>
         )}
       </span>
