@@ -4,4 +4,5 @@ export const filterData = (searchText, restaurants) => {
       restaurant?.info?.name.toLowerCase().includes(searchText.toLowerCase())
     );
     return resFilterData;
-  }
+}
+ 

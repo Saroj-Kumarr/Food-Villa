@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import contactImage from "../Images/contactImage.png";
+import contactImage from "../assets/contactImage.png";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import emailjs from "@emailjs/browser";

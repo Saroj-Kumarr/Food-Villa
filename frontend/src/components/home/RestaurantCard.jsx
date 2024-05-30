@@ -2,8 +2,8 @@ import { IMG_CDN_URL } from "../constants";
 import { IoMdStar } from "react-icons/io";
 import { LiaDotCircle } from "react-icons/lia";
 import { useSelector } from "react-redux";
-import vegLogo from "../Images/veg.png";
-import nonVegLogo from "../Images/non-veg.png";
+import vegLogo from "../assets/veg.png";
+import nonVegLogo from "../assets/non-veg.png";
 
 const RestaurantCard = ({
   cloudinaryImageId,

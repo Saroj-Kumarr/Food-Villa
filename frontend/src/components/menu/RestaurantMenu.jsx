@@ -1,13 +1,13 @@
 import { useNavigate, useParams } from "react-router";
-import useRestaurantMenu from "../Hooks/useResMenuData";
+import useRestaurantMenu from "../../hooks/useResMenuData";
 import RestaurantCategories from "./RestaurantCategories";
 import { IMG_CDN_URL } from "../constants";
 import { IoMdStar } from "react-icons/io";
 import { useSelector } from "react-redux";
 import RestaurantMenuShimmer from "./RestaurantMenuShimmer";
 import { useEffect } from "react";
-import vegImage from "../Images/veg.png";
-import nonVeg from "../Images/non-veg.png";
+import vegImage from "../assets/veg.png";
+import nonVeg from "../assets/non-veg.png";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();

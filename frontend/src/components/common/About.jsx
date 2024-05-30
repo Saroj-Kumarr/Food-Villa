@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import boy from "../Images/boy-removebg-preview.png";
+import boy from "../assets/boy-removebg-preview.png";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import GitHubCalendar from "react-github-calendar";
@@ -91,7 +91,6 @@ const About = () => {
           <img src={boy} alt="" />
         </div>
       </div>
-
     </div>
   );
 };

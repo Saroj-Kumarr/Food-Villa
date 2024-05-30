@@ -1,10 +1,10 @@
 import React from "react";
-import foodlogo from "../Images/logo.png";
+import foodlogo from "../../assets/logo.png";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { setLogin, setTheme } from "../Utils/ItemSlice";
-import { ReactComponent as Sun } from "../Images/Sun.svg";
-import { ReactComponent as Moon } from "../Images/Moon.svg";
+import { setLogin, setTheme } from "../../redux/itemSlice/ItemSlice";
+import { ReactComponent as Sun } from "../../assets/Sun.svg";
+import { ReactComponent as Moon } from "../../assets/Moon.svg";
 import { getAuth, signOut } from "firebase/auth";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";

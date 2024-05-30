@@ -37,7 +37,7 @@ const Footer = () => {
         <FaLinkedin className="text-xl" />
       </div>
       <h3 className={`${theme ? " text-white" : "text-[#373737]"}`}>
-        || Developed by <IoIosHeart className="inline text-red-600" /> Saroj
+        || Design and developed by <IoIosHeart className="inline text-red-600" /> Saroj
         Kumar
       </h3>
     </div>

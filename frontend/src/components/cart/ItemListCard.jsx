@@ -4,7 +4,7 @@ import { FaRupeeSign } from "react-icons/fa";
 import { FaPlusSquare } from "react-icons/fa";
 import { FaMinusSquare } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart, deleteToCart } from "../Utils/ItemSlice";
+import { addToCart, deleteToCart } from "../../redux/itemSlice/ItemSlice";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -39,9 +39,7 @@ const ItemListCard = ({ item }) => {
     <div
       key={item.card.info.id}
       className={`p-2 my-2 gap-2 hover:scale-[102%]  duration-300 flex min-h-32 w-full ${
-        theme
-          ? "bg-black bg-dark-mode"
-          : "bg-white bg-light-mode-shadow "
+        theme ? "bg-black bg-dark-mode" : "bg-white bg-light-mode-shadow "
       }`}
     >
       {item.card.info.imageId ? (

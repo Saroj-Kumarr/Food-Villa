@@ -3,12 +3,12 @@ import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { swiggy_api_URL } from "../constants";
 import { Link, useNavigate } from "react-router-dom";
-import { filterData } from "../Utils/Helper";
-import useResData from "../Hooks/useResData";
+import { filterData } from "../../utils/helper";
+import useResData from "../../hooks/useResData";
 import { FiSearch } from "react-icons/fi";
 import Select from "react-select";
 import { useDispatch, useSelector } from "react-redux";
-import restaurantImage from "../Images/restaurant.jpg";
+import restaurantImage from "../assets/restaurant.jpg";
 import { FaHandsPraying } from "react-icons/fa6";
 
 const Body = () => {
@@ -19,7 +19,7 @@ const Body = () => {
   const [selectedOption, setSelectedOption] = useState([]);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  
+
   const theme = useSelector((store) => store.item.theme);
 
   const options = [
@@ -89,8 +89,10 @@ const Body = () => {
   return (
     <div
       className={`min-h-screen  ${
-        theme ? "bg-black bg-light-mode-shadow"
-          : "bg-white bg-light-mode-shadow"}`}
+        theme
+          ? "bg-black bg-light-mode-shadow"
+          : "bg-white bg-light-mode-shadow"
+      }`}
     >
       <div className="flex items-center justify-center absolute w-full z-10 top-4 -left-20">
         <input
