@@ -23,16 +23,20 @@ app.post("/order", async (req, res) => {
     const order = await razorpay.orders.create(options);
 
     if (!order) {
-      return res.status(500).send("Error");
+      res.status(400).json({ msg: "Something went wrong." });
     }
 
-    res.json(order);
+    res.status(200).json(order);
   } catch (err) {
-    res.status(500).send("Error");
+    res.status(500).json({ msg: "Internal Server Error." });
   }
 });
 
 app.post("/order/validate", async (req, res) => {
+
+  console.log(req.body)
+
+
   const { razorpay_order_id, razorpay_payment_id, razorpay_signature } =
     req.body;
 

@@ -30,8 +30,6 @@ const useResData = (API_URL) => {
 
         const resData = await checkJsonData(json);
 
-        console.log(resData);
-
         setAllRestaurants(resData);
         setFilteredRestaurants(resData);
       }

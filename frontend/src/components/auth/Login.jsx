@@ -129,7 +129,7 @@ const Signup = () => {
   };
 
   const handleRegister = () => {
-    navigate("/");
+    navigate("/register");
   };
 
   useEffect(() => {

@@ -3,6 +3,7 @@ import boy from "../../assets/boy-removebg-preview.png";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import GitHubCalendar from "react-github-calendar";
+import arrowdown from "../../assets/Saroj Resume.pdf";
 
 const About = () => {
   const theme = useSelector((store) => store.item.theme);
@@ -61,7 +62,9 @@ const About = () => {
               projects.
             </p>
             <button className="bg-[#B22126] px-3 py-[3px] text-white rounded-sm hover:bg-[#a31b1f] bg-light-mode-shadow mt-2">
-              Download CV
+              <a download={true} href={arrowdown}>
+                Download Cv
+              </a>
             </button>
             <p
               className={` font-bold mt-2 text-xl ${

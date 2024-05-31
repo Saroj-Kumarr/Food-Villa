@@ -16,6 +16,8 @@ const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  if (!login && sessionStorage.getItem("isLogin") === "false") navigate("/");
+
   const handleTheme = (e) => {
     dispatch(setTheme());
   };
@@ -30,6 +32,7 @@ const Header = () => {
         });
         dispatch(setLogin(false));
         sessionStorage.setItem("isLogin", "false");
+        sessionStorage.clear();
         navigate("/");
       })
       .catch((error) => {
@@ -46,11 +49,11 @@ const Header = () => {
       <div className=" flex items-center gap-1">
         <img className="w-28" src={foodlogo} alt="" />
         <h3
-          className={`text-2xl font-bold -ml-2 ${
+          className={`text-2xl xs:hidden font-bold -ml-2 ${
             theme ? "text-white" : "text-black"
           }`}
         >
-          Food <span className="text-[#B22126]">Villa</span>{" "}
+          Food <span className="text-[#B22126] xs:hidden">Villa</span>{" "}
         </h3>
       </div>
 

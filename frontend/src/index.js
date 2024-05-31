@@ -18,6 +18,7 @@ import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import OrderDetails from "./components/order/OrderDetails";
 import LandingPage from "./components/home/LandingPage";
+import Home from "./components/home/LandingPage";
 
 const AppLayout = () => {
   return (
@@ -41,6 +42,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/",
         element: <LandingPage />,
+      },
+      {
+        path: "/home",
+        element: <Home />,
       },
       {
         path: "/login",

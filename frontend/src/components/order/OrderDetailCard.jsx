@@ -18,7 +18,7 @@ const OrderDetailCard = ({ item }) => {
           className={`h-28  w-44 ${theme ? "bg-[#6c6969]" : "bg-[#E8E6E7]"}`}
         ></div>
       )}
-      <p className="font-bold text-orange-400  ">{item.card.info.name}</p>
+      <p className="font-bold text-orange-400  w-52">{item.card.info.name}</p>
       <div className=" text-green-600 text-xl">
         {" "}
         <FaRupeeSign className="inline text-xl -mt-[3px] " />
@@ -29,7 +29,7 @@ const OrderDetailCard = ({ item }) => {
         )}
       </div>
       <div className="flex gap-2 items-center">
-        <p>Order placed</p>
+        <p className={`${!theme?"text-black":"text-white"}`}>Order placed</p>
         <FcOk className="inline -mt-[2px] -ml-[2px]" />
       </div>
     </div>
