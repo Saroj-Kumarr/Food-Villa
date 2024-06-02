@@ -71,84 +71,79 @@ const Cart = () => {
   }, [cartItems]);
 
   const paymentHandler = async (e) => {
-    
+    const response = await fetch("http://localhost:8000/order", {
+      method: "POST",
+      body: JSON.stringify({
+        amount: parseInt(totalPrice + deliveryCharge - discount) * 100,
+        currency: "INR",
+        receipt: "qwsaq1",
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const order = await response.json();
 
-    navigate("/cart/ordersuccess");
-    
-    // const response = await fetch("http://localhost:8000/order", {
-    //   method: "POST",
-    //   body: JSON.stringify({
-    //     amount: parseInt(totalPrice + deliveryCharge - discount) * 100,
-    //     currency: "INR",
-    //     receipt: "qwsaq1",
-    //   }),
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    // });
-    // const order = await response.json();
+    var options = {
+      key: "rzp_test_o3OG8LG9cCAqvZ",
+      amount: parseInt(totalPrice + deliveryCharge - discount) * 100,
+      currency: "INR",
+      name: "Food Villa",
+      description: "Razorpay payment gateway",
+      image: "https://example.com/your_logo",
+      order_id: order.id,
+      handler: async function (response) {
+        const body = {
+          ...response,
+        };
 
+        const validateRes = await fetch(
+          "http://localhost:8000/order/validate",
+          {
+            method: "POST",
+            body: JSON.stringify(body),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+        const jsonRes = await validateRes.json();
 
-    // var options = {
-    //   key: "rzp_test_o3OG8LG9cCAqvZ",
-    //   amount: parseInt(totalPrice + deliveryCharge - discount) * 100,
-    //   currency: "INR",
-    //   name: "Food Villa",
-    //   description: "Razorpay payment gateway",
-    //   image: "https://example.com/your_logo",
-    //   order_id: order.id,
-    //   handler: async function (response) {
-    //     const body = {
-    //       ...response,
-    //     };
+        toast.success("You order has been placed successfully !", {
+          position: "top-center",
+          theme: "dark",
+        });
 
-    //     const validateRes = await fetch(
-    //       "http://localhost:8000/order/validate",
-    //       {
-    //         method: "POST",
-    //         body: JSON.stringify(body),
-    //         headers: {
-    //           "Content-Type": "application/json",
-    //         },
-    //       }
-    //     );
-    //     const jsonRes = await validateRes.json();
+        sendEmail(form);
 
-    //     toast.success("You order has been placed successfully !", {
-    //       position: "top-center",
-    //       theme: "dark",
-    //     });
+        navigate("/cart/ordersuccess");
+      },
+      prefill: {
+        name: "Saroj Kumar",
+        email: "saroj@gmail.com",
+        contact: "8638316090",
+      },
+      notes: {
+        address: "Razorpay Corporate Office",
+      },
+      theme: {
+        color: "#3399cc",
+      },
+    };
 
-    //     sendEmail(form);
+    var rzp1 = new window.Razorpay(options);
 
-    //     navigate("/cart/ordersuccess");
-    //   },
-    //   prefill: {
-    //     name: "Saroj Kumar",
-    //     email: "saroj@gmail.com",
-    //     contact: "8638316090",
-    //   },
-    //   notes: {
-    //     address: "Razorpay Corporate Office",
-    //   },
-    //   theme: {
-    //     color: "#3399cc",
-    //   },
-    // };
-
-    // var rzp1 = new window.Razorpay(options);
-
-    // rzp1.on("payment.failed", function (response) {
-    //   alert(response.error.code);
-    //   alert(response.error.description);
-    //   alert(response.error.source);
-    //   alert(response.error.step);
-    //   alert(response.error.reason);
-    //   alert(response.error.metadata.order_id);
-    //   alert(response.error.metadata.payment_id);
-    // });
-    // rzp1.open();
-    // e.preventDefault();
+    rzp1.on("payment.failed", function (response) {
+      alert(response.error.code);
+      alert(response.error.description);
+      alert(response.error.source);
+      alert(response.error.step);
+      alert(response.error.reason);
+      alert(response.error.metadata.order_id);
+      alert(response.error.metadata.payment_id);
+    });
+    rzp1.open();
+    e.preventDefault();
   };
 
   return (
